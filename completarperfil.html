@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <title>Foro Expertos su lugar de busqueda</title>
+<link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
+<link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
+<link rel="stylesheet" type="text/css" href="../css/stylecompletar.css">
+<script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+<script src="js/funciones.js" type="text/javascript"></script>
+<script src ="js/obtenersubcategoria.js" type="text/javascript"></script>
+<script src ="js/obtenerprofesion.js" type="text/javascript"></script>
+<script>
+
+var nickna= parametroURL("nickname");
+window.onload = function() {
+$("#usuario").val(nickna);
+}
+
+
+
+
+</script>
+
+
+</head>
+<body>
+  <header id="main-header">
+    <img src="../imagenes/logo.png"></img>
+    <a class="boton_personalizado" href="registrar.html">Registrarse</a>
+        <a class="boton_personalizado1" href=loguearse.html>Loguearse</a>
+    <form id="buscar" action="" method="">
+      <input type="search" placeholder="Buscar...">
+      <button>Buscar</button>
+    </form>
+  </header>
+
+  <ul id="menubar">
+  <li><a href="../index.html">Inicio</a></li>
+  <li><a href=”#”>Sobre nosotros</a></li>
+  <li><a href=”#”>Servicios</a></li>
+  <li><a href=”#”>Productos</a></li>
+  <li><a href=”#”>Contacto</a></li>
+  </ul>
+
+
+
+<main id="cuerpo">
+
+    <h1 id=titulo> Registro en Expertos </h1>
+    <form id="formulario" action="/php/agregarexperto.php"method="POST">
+
+
+      <label for="nickname">Nickname </label>
+      <input id="usuario" type="text" name="nickname" class="form-input"   required/>
+
+      <label for="subcategoria">Subcategoria * </label>
+      <select   id="subcategoria" name="Subcategoria"  required/></select>
+
+      <label for="profesion">Profesion * </label>
+      <select   id="profesion" name="Profesion" required/></select>
+
+
+
+     <input  name="submit" type="submit" value="Suscribirse" />
+
+  </form>
+
+
+</main>
+</body>
+  <footer>
+  <div id="footer">
+
+          <p>&#169; 2020 All Rights Reserverd</p>
+          <p> Diseñado por Felipe Cendrero Diaz</p>
+   </div>
+  </footer>
+  </html>

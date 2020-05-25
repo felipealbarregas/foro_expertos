@@ -10,14 +10,15 @@
 <link rel="stylesheet" type="text/css" href="../css/stylecompletar.css">
 <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
 <script src="js/funciones.js" type="text/javascript"></script>
+<script src ="js/obtenercategoria.js" type="text/javascript"></script>
 <script src ="js/obtenersubcategoria.js" type="text/javascript"></script>
 <script src ="js/obtenerprofesion.js" type="text/javascript"></script>
 <script>
-
 var nickna= parametroURL("nickname");
 window.onload = function() {
 $("#usuario").val(nickna);
 }
+
 
 
 
@@ -43,7 +44,7 @@ $("#usuario").val(nickna);
   <li><a href=”#”>Servicios</a></li>
   <li><a href=”#”>Productos</a></li>
   <li><a href=”#”>Contacto</a></li>
-  </ul>
+</ul>
 
 
 
@@ -56,8 +57,11 @@ $("#usuario").val(nickna);
       <label for="nickname">Nickname </label>
       <input id="usuario" type="text" name="nickname" class="form-input"   required/>
 
+      <label for="categoria">Categoria * </label>
+      <select   id="categoria" name="categoria" onclick="obtenersubcategoria()" required/></select>
+
       <label for="subcategoria">Subcategoria * </label>
-      <select   id="subcategoria" name="Subcategoria"  required/></select>
+      <select   id="subcategoria" name="Subcategoria" onclick="obtenerprofesion()"  required/></select>
 
       <label for="profesion">Profesion * </label>
       <select   id="profesion" name="Profesion" required/></select>

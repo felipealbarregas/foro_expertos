@@ -1,8 +1,18 @@
 
+function  obtenersubcategoria(){
+  for (let i = document.getElementById('subcategoria').options.length; i >= 0; i--) {
+    document.getElementById('subcategoria').remove(i);
+};
+for (let i = document.getElementById('profesion').options.length; i >= 0; i--) {
+  document.getElementById('profesion').remove(i);
+};
+  var id=document.getElementById('categoria').value;
+  var parametros = {"id":id};
 $.ajax({
    type: "GET",
    url: '../php/obtenersubcategoria.php',
    dataType: "json",
+   data: parametros,
 
    success: function(data){
           $.each(data,function(i,item) {
@@ -13,3 +23,5 @@ $.ajax({
      alert('error');
    }
  });
+
+}

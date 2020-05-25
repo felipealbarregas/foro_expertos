@@ -39,6 +39,9 @@ $headers = 'From:noreply@foro_expertos.com' . "\r\n"; // Set from headers
 mail($to, $subject, $message, $headers); // Send our email
 
 sleep(10);
-header('Location:http://localhost/index.html');
+  $url ="http://localhost/inicioexpertos.html?nickname=$nickname";
+  $tiempo_espera = 3; // Aquí se configura cuántos segundos hasta la actualización.
+  // Declaramos la funcion apra la redirección
+  header("refresh: $tiempo_espera; url=$url");
 
 ?>

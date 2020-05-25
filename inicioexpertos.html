@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <title>Foro Expertos su lugar de busqueda</title>
+<link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
+<link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
+<link rel="stylesheet" type="text/css" href="../css/styleexpertos.css">
+<script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+<script src="js/funciones.js" type="text/javascript"></script>
+<script>
+
+
+
+
+
+
+  function comprobarusuario(){
+    var nickname = parametroURL("nickname");
+
+    $.ajax({
+        url:'http://localhost/php/comprobarexperto.php',
+        data: {nickname: nickname},
+          type : 'POST',
+        success: function(respuesta){
+          if (respuesta==0){
+              // Obtenemos la referencia del elemento body
+              var body = document.getElementsByTagName("body")[0];
+              // Creamos un elemento <table> y un elemento <tbody>
+              var tabla = document.createElement("table");
+              var tblBody = document.createElement("tbody");
+              // Creamos las celdas
+              for (var i = 0; i < 1; i++){
+                // Creamos las hileras de la tabla
+                var fila = document.createElement("tr");
+                for (var j = 0; j < 1 ; j++) {
+                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+                  // texto sea el contenido de <td>, ubica el elemento <td> al final
+                  // de la hilera de la tabla
+                  var celda = document.createElement("td");
+                  var url = "<a href='verperfil.html'>Mi perfil</a>";
+                  celda.innerHTML=url;
+                  fila.appendChild(celda);
+
+                }
+                // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+                tblBody.appendChild(fila);
+              }
+                // Creamos las celdas
+                for (var i = 0; i < 1; i++){
+                  // Creamos las hileras de la tabla
+                  var fila = document.createElement("tr");
+                  for (var j = 0; j < 1 ; j++) {
+                    // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+                    // texto sea el contenido de <td>, ubica el elemento <td> al final
+                    // de la hilera de la tabla
+                    var celda = document.createElement("td");
+                      var nickname = parametroURL("nickname");
+                    var url = "<a href='completarperfil.html?nickname="+nickname+"'>Completar Perfil</a>";
+                    celda.innerHTML=url;
+                    fila.appendChild(celda);
+
+                  }
+              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+              tblBody.appendChild(fila);
+              }
+
+              for (var i = 0; i < 1; i++) {
+                // Creamos las hileras de la tabla
+                var fila = document.createElement("tr");
+                for (var j = 0; j < 1 ; j++) {
+                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+                  // texto sea el contenido de <td>, ubica el elemento <td> al final
+                  // de la hilera de la tabla
+                  var celda = document.createElement("td");
+                  var url = "<a href='cerrarsesion.html'>Cerrar Sesion</a>";
+                  celda.innerHTML=url;
+                  fila.appendChild(celda);
+                }
+              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+              tblBody.appendChild(fila);
+              }
+              // posicionamos el <tbody> debajo del elemento <table>
+              tabla.appendChild(tblBody);
+              // appends <table> into <body>
+              body.appendChild(tabla);
+              // modifica el atributo "border" de la tabla y lo fija a "2";
+
+              tabla.setAttribute("id", "tabla");
+
+              var result = document.getElementById("menubar");
+              result.appendChild(tabla);
+
+          }else if(respuesta!=0){
+              // Obtenemos la referencia del elemento body
+              var body = document.getElementsByTagName("body")[0];
+              // Creamos un elemento <table> y un elemento <tbody>
+              var tabla = document.createElement("table");
+              var tblBody = document.createElement("tbody");
+
+              // Creamos las celdas
+              for (var i = 0; i < 1; i++){
+                // Creamos las hileras de la tabla
+                var fila = document.createElement("tr");
+                for (var j = 0; j < 1 ; j++) {
+                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+                  // texto sea el contenido de <td>, ubica el elemento <td> al final
+                  // de la hilera de la tabla
+                  var celda = document.createElement("td");
+                  var url = "<a href='completarperfil.html'>Mi perfil</a>";
+                  celda.innerHTML=url;
+                  fila.appendChild(celda);
+
+                }
+
+              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+              tblBody.appendChild(fila);
+              }
+              for (var i = 0; i < 1; i++) {
+                // Creamos las hileras de la tabla
+                var fila = document.createElement("tr");
+                for (var j = 0; j < 1 ; j++) {
+                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+                  // texto sea el contenido de <td>, ubica el elemento <td> al final
+                  // de la hilera de la tabla
+                  var celda = document.createElement("td");
+                  var url = "<a href='cerrarsesion.html'>Cerrar Sesion</a>";
+                  celda.innerHTML=url;
+                  fila.appendChild(celda);
+                }
+              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+              tblBody.appendChild(fila);
+              }
+              // posicionamos el <tbody> debajo del elemento <table>
+              tabla.appendChild(tblBody);
+              // appends <table> into <body>
+              body.appendChild(tabla);
+              // modifica el atributo "border" de la tabla y lo fija a "2";
+
+              tabla.setAttribute("id", "tabla");
+
+              var result = document.getElementById("menubar");
+              result.appendChild(tabla);
+
+          }
+        },
+        error: function(){
+          alert("no se puede");
+        },
+
+    });
+
+}
+
+</script>
+
+</head>
+<body>
+  <header id="main-header">
+    <img src="../imagenes/logo.png"></img>
+    <a class="boton_personalizado" href="registrar.html">Registrarse</a>
+        <a class="boton_personalizado1" href=loguearse.html>Loguearse</a>
+    <form id="buscar" action="" method="">
+      <input type="search" placeholder="Buscar...">
+      <button>Buscar</button>
+    </form>
+  </header>
+
+  <ul id="menubar">
+  <li><a href="../index.html">Inicio</a></li>
+  <li><a href=”#”>Sobre nosotros</a></li>
+  <li><a href=”#”>Servicios</a></li>
+  <li><a href=”#”>Productos</a></li>
+  <li><a href=”#”>Contacto</a></li>
+  <li>
+    <img  id="logo" src="imagenes/perfildeusuario.jpg" onclick="comprobarusuario()"></li>
+  </ul>
+
+    <h1>Bienvenidos a foro expertos</h1>
+
+  <h3>Si es la primera vez que inicia sesión debe de completar su perfil</h3>
+
+  <h3 id="destino"></h3>
+
+</body>
+  <footer>
+  <div id="footer">
+
+          <p>&#169; 2020 All Rights Reserverd</p>
+          <p> Diseñado por Felipe Cendrero Diaz</p>
+   </div>
+  </footer>
+  </html>

@@ -6,14 +6,7 @@
     <title>Foro Expertos su lugar de busqueda</title>
 <link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
 <link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
-<link rel="stylesheet" type="text/css" href="../css/stylelogueo.css">
-<script>
-
-function guardarusu(){
-  var usuario = document.getElementById("usuario").value;
-  sessionStorage.setItem("usuario", usuario);
-}
-</script>
+<link rel="stylesheet" type="text/css" href="../css/stylebody.css">
 </head>
 <body>
   <header id="main-header">
@@ -38,17 +31,39 @@ function guardarusu(){
 
 <main id="cuerpo">
 
-    <h1 id=titulo> Loguearse </h1>
+    <h1 id=titulo> Registro de Usuarios</h1>
 
-    <form id="formulario1" action="php/logueo.php" method="POST">
+    <form id="formulario" action="php/registrousu.php" method="POST">
+
+
+      <label for="usuario">Nickname * </label>
+      <input  id="usuario" type="text" name="usuario" class="form-input" required/>
+
+      <label for="categoria">Categoria * </label>
+      <select   id="categoria" name="categoria" onclick="obtenersubcategoria()" required/></select>
+
+      <label for="subcategoria">Subcategoria * </label>
+      <select   id="subcategoria" name="Subcategoria" onclick="obtenerprofesion()"  required/></select>
+
+
+      <label for="roles">Rol * </label>
+      <select name="roles" id="roles">
+        <option value="Usuario">Usuarios</option>
+        <option value="Expertos">Expertos</option>
+      </select>
+
+
 
       <label for="Nickname">Nickname * </label>
-      <input  id="usuario" type="text" name="nickname" class="form-input" onblur="guardarusu()" required/>
+      <input type="text" name="Nickname" class="form-input" required/>
 
       <label for="password">Password * </label>
       <input type="password" name="password" class="form-input" required/>
 
-     <input  name="submit" type="submit" value="Login" />
+      <label for="email">Email *</span></label>
+      <input type="email" name="email" class="form-input" />
+
+     <input  name="submit" type="submit" value="Suscribirse" />
 
   </form>
 

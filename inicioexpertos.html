@@ -39,7 +39,7 @@ window.onload=comprobarusuario(2);
                   // texto sea el contenido de <td>, ubica el elemento <td> al final
                   // de la hilera de la tabla
                   var celda = document.createElement("td");
-                  var url = "<a href='verperfil.html'>Mi perfil</a>";
+                  var url = "<a href='verperfil.html'  onmouseout='eliminartabla()'>Mi perfil</a>";
                   celda.innerHTML=url;
                   fila.appendChild(celda);
 
@@ -57,7 +57,7 @@ window.onload=comprobarusuario(2);
                     // de la hilera de la tabla
                     var celda = document.createElement("td");
                       var nickname = parametroURL("nickname");
-                    var url = "<a href='completarperfil.html?nickname="+nickname+"'>Completar Perfil</a>";
+                    var url = "<a href='completarperfil.html?nickname="+nickname+"'  onmouseout='eliminartabla()'>Completar Perfil</a>";
                     celda.innerHTML=url;
                     fila.appendChild(celda);
 
@@ -74,7 +74,7 @@ window.onload=comprobarusuario(2);
                   // texto sea el contenido de <td>, ubica el elemento <td> al final
                   // de la hilera de la tabla
                   var celda = document.createElement("td");
-                  var url = "<a href='cerrarsesion.html'>Cerrar Sesion</a>";
+                  var url = "<a href='cerrarsesion.html'  onmouseout='eliminartabla()'>Cerrar Sesion</a>";
                   celda.innerHTML=url;
                   fila.appendChild(celda);
                 }
@@ -108,7 +108,7 @@ window.onload=comprobarusuario(2);
                   // texto sea el contenido de <td>, ubica el elemento <td> al final
                   // de la hilera de la tabla
                   var celda = document.createElement("td");
-                  var url = "<a href='completarperfil.html'>Mi perfil</a>";
+                  var url = "<a href='completarperfil.html' onmouseout='eliminartabla()'>Mi perfil</a>";
                   celda.innerHTML=url;
                   fila.appendChild(celda);
 
@@ -125,7 +125,7 @@ window.onload=comprobarusuario(2);
                   // texto sea el contenido de <td>, ubica el elemento <td> al final
                   // de la hilera de la tabla
                   var celda = document.createElement("td");
-                  var url = "<a href='cerrarsesion.html'>Cerrar Sesion</a>";
+                  var url = "<a href='cerrarsesion.html' onmouseout='eliminartabla()'>Cerrar Sesion</a>";
                   celda.innerHTML=url;
                   fila.appendChild(celda);
                 }
@@ -166,11 +166,14 @@ window.onload=comprobarusuario(2);
 
 }
 
+function eliminartabla(){
+  $("#tabla").remove();
 
+}
 </script>
 
 </head>
-<body>
+<body id="body">
   <header id="main-header">
     <img src="../imagenes/logo.png"></img>
     <a class="boton_personalizado" href="registrar.html">Registrarse</a>
@@ -189,6 +192,7 @@ window.onload=comprobarusuario(2);
 
   <li>
     <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="comprobarusuario(1)"></li>
+  <li id="nickname"><script>var nickname = parametroURL("nickname"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 
     <h1>Bienvenidos a foro expertos</h1>

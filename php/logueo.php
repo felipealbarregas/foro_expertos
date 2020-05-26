@@ -1,8 +1,8 @@
 <?php
 include('../includes/dbconnection.php' );
-if(isset($_POST['Nickname']) && !empty($_POST['Nickname']) AND isset($_POST['password']) && !empty($_POST['password'])){
+if(isset($_POST['nickname']) && !empty($_POST['nickname']) AND isset($_POST['password']) && !empty($_POST['password'])){
   // Verify data
-  $nickname=$_POST['Nickname'];
+  $nickname=$_POST['nickname'];
   $contrasena=$_POST['password'];
   }
   $consulta = "SELECT password , ID_Roles FROM personas where Nickname='$nickname' and activo='1'";
@@ -27,7 +27,7 @@ if(isset($_POST['Nickname']) && !empty($_POST['Nickname']) AND isset($_POST['pas
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");
   }elseif ($fila['ID_Roles']==2) {
-    $url ="http://localhost/iniciousuarios.html"; // aqui pones la url
+    $url ="http://localhost/iniciousuarios.html?nickname=$nickname"; // aqui pones la url
     $tiempo_espera = 3; // Aquí se configura cuántos segundos hasta la actualización.
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");

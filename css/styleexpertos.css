@@ -47,3 +47,12 @@ h3{
 {
   color: black;
 }
+#nickname{
+  position: absolute;
+  right: 6%;
+  font-family: Arial;
+ font-size: 12px;
+margin-top: 9px;
+ text-decoration: none;
+ color: #fff;
+}

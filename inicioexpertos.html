@@ -12,19 +12,19 @@
 <script>
 
 
+window.onload=comprobarusuario(2);
 
 
 
-
-  function comprobarusuario(){
+  function comprobarusuario(proceso){
     var nickname = parametroURL("nickname");
-
     $.ajax({
         url:'http://localhost/php/comprobarexperto.php',
         data: {nickname: nickname},
           type : 'POST',
         success: function(respuesta){
-          if (respuesta==0){
+          if(proceso==1){
+          if (respuesta==1){
               // Obtenemos la referencia del elemento body
               var body = document.getElementsByTagName("body")[0];
               // Creamos un elemento <table> y un elemento <tbody>
@@ -92,7 +92,7 @@
               var result = document.getElementById("menubar");
               result.appendChild(tabla);
 
-          }else if(respuesta!=0){
+          }else if(respuesta!=1){
               // Obtenemos la referencia del elemento body
               var body = document.getElementsByTagName("body")[0];
               // Creamos un elemento <table> y un elemento <tbody>
@@ -143,7 +143,20 @@
               var result = document.getElementById("menubar");
               result.appendChild(tabla);
 
+
           }
+        }else if (proceso==2) {
+          if(respuesta!=1){
+            var body = document.getElementsByTagName("body")[0];
+          var result = document.getElementById("menubar");
+          var li=document.createElement('li');
+            li.innerHTML="<li><a href='#'>Preguntas</a></li>";
+            result.appendChild(li);
+            var li=document.createElement('li');
+              li.innerHTML="<li><a href='#'>valoraciones</a></li>";
+              result.appendChild(li);
+        }
+      }
         },
         error: function(){
           alert("no se puede");
@@ -152,6 +165,7 @@
     });
 
 }
+
 
 </script>
 
@@ -171,10 +185,10 @@
   <li><a href="../index.html">Inicio</a></li>
   <li><a href=”#”>Sobre nosotros</a></li>
   <li><a href=”#”>Servicios</a></li>
-  <li><a href=”#”>Productos</a></li>
-  <li><a href=”#”>Contacto</a></li>
+
+
   <li>
-    <img  id="logo" src="imagenes/perfildeusuario.jpg" onclick="comprobarusuario()"></li>
+    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="comprobarusuario(1)"></li>
   </ul>
 
     <h1>Bienvenidos a foro expertos</h1>
@@ -189,6 +203,7 @@
 
           <p>&#169; 2020 All Rights Reserverd</p>
           <p> Diseñado por Felipe Cendrero Diaz</p>
+          <img id="footerimg" src="/imagenes/logocentro.jpg"/>
    </div>
   </footer>
   </html>

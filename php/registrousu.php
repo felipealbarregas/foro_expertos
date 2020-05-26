@@ -19,6 +19,7 @@ $hash = md5( rand(0,1000) );
 $sql = "INSERT INTO personas (ID_Roles, Nombre,Apellidos,Provincia,Ciudad,Nickname,Password, Email,hash,activo) VALUES ('$rol', '$nombre','$apellidos','$provincia','$ciudad','$nickname','$contrasena','$email','$hash','0')";
 if (mysqli_query($conexion, $sql)) {
       echo "Usuario creado correctamente";
+      echo "<br>";
       echo "Debera verificar su correo electronico que ha sido enviado";
 
 } else {

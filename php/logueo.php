@@ -27,7 +27,7 @@ if(isset($_POST['nickname']) && !empty($_POST['nickname']) AND isset($_POST['pas
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");
   }elseif ($fila['ID_Roles']==2) {
-    $url ="http://localhost/iniciousuarios.html?nickname=$nickname"; // aqui pones la url
+    $url ="http://localhost/iniciousuarios.html"; // aqui pones la url
     $tiempo_espera = 3; // Aquí se configura cuántos segundos hasta la actualización.
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");

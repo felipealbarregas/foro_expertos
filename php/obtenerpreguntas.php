@@ -6,7 +6,6 @@ $categoria="";
 if(isset($_GET['nickname']) && !empty($_GET['nickname'])){
   $nombre=$_GET['nickname'];
   }
-
   $consulta = "SELECT ID FROM personas where Nickname='$nombre'";
   $resultado = $conexion->query($consulta);
   $fila = $resultado->fetch_assoc();
@@ -17,7 +16,7 @@ if(isset($_GET['nickname']) && !empty($_GET['nickname'])){
   $id =$fila1['ID'];
 
 
-      $consulta = "SELECT * FROM preguntas where ID_Usuario='$id'";
+      $consulta = "SELECT Tema, Fecha,  Mensaje  FROM preguntas where ID_Usuario='$id'";
       $resultado = $conexion->query($consulta)or die($conexion->error);
   while($data = mysqli_fetch_array($resultado)){
       $mensajes[] =$array=array(
@@ -27,7 +26,7 @@ if(isset($_GET['nickname']) && !empty($_GET['nickname'])){
       );
   }
 
-    echo json_encode($subcategoria);
+    echo json_encode($mensajes);
 
       mysqli_close($conexion);
 ?>

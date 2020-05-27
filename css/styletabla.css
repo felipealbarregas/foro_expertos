@@ -1,0 +1,48 @@
+#contenedor{
+      position:absolute;
+       overflow:scroll;
+       height:90%;
+       width:80%;
+       top:40%;
+        left:10%;
+       align: center;
+  }
+}
+
+#tablamensajes{
+background:  #white;
+height:70%;
+width:80%;
+ top:40%;
+ left: 10%;
+}
+#iniciar{
+
+   background:  #bbe2f9;
+   font-size: 40px;
+}
+td{
+  width:80%;
+
+}
+.tema{
+
+  font-size: 20px;
+
+}
+.fecha{
+    height:10px;
+    font-size: 20px;
+}
+.mens{
+  border: 2px solid #2175bc;
+    font-size: 20px;
+  height:30px;
+  padding-bottom:10px;
+}
+#cabecera{
+    text-align: center;
+  background:  #bbe2f9;
+  font-size:30px;
+  color: #2175bc;
+}

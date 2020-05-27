@@ -22,9 +22,6 @@
 
   <ul id="menubar">
   <li><a href="../index.html">Inicio</a></li>
-  <li><a href=”#”>Sobre nosotros</a></li>
-  <li><a href=”#”>Servicios</a></li>
-  <li><a href=”#”>Productos</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
   </ul>
 
@@ -65,16 +62,14 @@
 ?>
 	<form id="formulario" method="post">
     	<div>
-        	<h1>Formulario de env&iacute;o de correos a trav&eacute;s de PHP con la funci&oacute;n "mail()".</h1>
+        	<h1>Contacta con nosotros</h1>
             <label>Asunto</label><br>
             <input type="text" name="asunto" value="" required autofocus style="" placeholder="Asunto" ><br>
             <label>De</label><br>
             <input type="text"  name="nombre" value="" required style="" placeholder="Tu Nombre" >
             <input type="email" name="emisor" required style="" placeholder="Email remitente" value=""><br>
             <label>Para</label><br>
-            <input type="text" name="receptor" required style="" placeholder="Email destinatario" value="">
-            <label>Si quieres enviar a varios e-mails, separalos con una coma ",".</label><br><br>
-            <label>Mensaje</label><br>
+            <input type="text" name="receptor" required style=""  value="foroexpertofelipe@gmail.com">
             <textarea name="cuerpo" style="" placeholder="Contenido del mensaje" cols="57" rows="10"></textarea><br>
             <input type="submit" name="enviar" value="Enviar">
             <br><br>

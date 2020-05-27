@@ -150,10 +150,13 @@ window.onload=comprobarusuario(2);
             var body = document.getElementsByTagName("body")[0];
           var result = document.getElementById("menubar");
           var li=document.createElement('li');
-            li.innerHTML="<li><a href='#'>Preguntas</a></li>";
+            li.innerHTML="<li><a href='preguntascategoria.html'>Preguntas</a></li>";
             result.appendChild(li);
             var li=document.createElement('li');
-              li.innerHTML="<li><a href='#'>valoraciones</a></li>";
+              li.innerHTML="<li><a href='vermirespuestas.html'>Respuestas</a></li>";
+              result.appendChild(li);
+            var li=document.createElement('li');
+              li.innerHTML="<li><a href='vermisvaloraciones.html'>valoraciones</a></li>";
               result.appendChild(li);
         }
       }
@@ -186,8 +189,7 @@ function eliminartabla(){
 
   <ul id="menubar">
   <li><a href="../index.html">Inicio</a></li>
-  <li><a href=”#”>Sobre nosotros</a></li>
-  <li><a href=”#”>Servicios</a></li>
+  <li><a href="php/enviarcorreo.php">Contacto</a></li>
 
 
   <li>
@@ -195,9 +197,9 @@ function eliminartabla(){
   <li id="nickname"><script>var nickname = parametroURL("nickname"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 
-    <h1>Bienvenidos a foro expertos</h1>
+    <h1>Bienvenido   <script>document.write(nickname); </script> </h1>
 
-  <h3>Si es la primera vez que inicia sesión debe de completar su perfil</h3>
+
 
   <h3 id="destino"></h3>
 

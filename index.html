@@ -6,7 +6,28 @@
     <title>Foro Expertos su lugar de busqueda</title>
 <link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
 <link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
+<link rel="stylesheet" type="text/css" href="../css/styletabla.css">
+<script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+<script>
+window.onload = function() {
+  $.ajax({
+     type: "GET",
+     url: '../php/obtenerpreguntastodas.php',
+     dataType: "json",
 
+     success: function(data){
+            $.each(data,function(i,item) {
+              $('#contenido').append('<div id="cabecera"><hr id="cabecera">Mensaje<hr id="cabecera"></div>');
+              $('#contenido').append('<tr class="tema"><td><strong>Tema:</strong>  ' + item.tema + '</td></tr><tr><td class="fecha"><strong>Fecha:  </strong>' + item.fecha + '</td></tr><tr><td class="mens"><strong>Mensaje:</strong> <br><br>' + item.mensaje + '</td></tr>');
+
+     });
+     },
+     error: function (request, status, error) {
+          alert(error);
+      }
+   });
+}
+</script>
 </head>
 <body>
   <header id="main-header">
@@ -21,9 +42,24 @@
 
   <ul id="menubar">
   <li><a href="../index.html">Inicio</a></li>
-  <li><a href=”#”>Ultimos mensajes</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
   </ul>
+
+  <h1>Mis preguntas</h1>
+<div id="contenedor">
+  <table  id="tablamensajes">
+ 		<thead>
+ 		  <tr>
+ 		     <th id="iniciar">Ultimos Mensajes</th>
+ 		  </tr>
+
+
+ 		</thead>
+ 			<tbody id="contenido">
+
+ 			</tbody>
+ 		</table>
+</div>
 
 
 
@@ -35,6 +71,7 @@
 
           <p>&#169; 2020 All Rights Reserverd</p>
           <p> Diseñado por Felipe Cendrero Diaz</p>
+            <img id="footerimg" src="/imagenes/logocentro.jpg"/>
    </div>
   </footer>
   </html>

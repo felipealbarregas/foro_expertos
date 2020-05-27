@@ -11,30 +11,29 @@ if(isset($_POST['nickname']) && !empty($_POST['nickname']) AND isset($_POST['pas
   if($fila==null){
     echo "Lo sentimos su usuario no existe o su cuenta no esta activada";
     $url ="http://localhost/index.html"; // aqui pones la url
-    $tiempo_espera = 10; // Aquí se configura cuántos segundos hasta la actualización.
+    $tiempo_espera = 0; // Aquí se configura cuántos segundos hasta la actualización.
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");
 
   }else{
   if($fila['password']==$contrasena){
-    echo "usuario logueado correctamente";
   }else{
     echo "el usuario no se ha podido loguear";
   }
   if($fila['ID_Roles']==1){
     $url ="http://localhost/inicioadmin.html"; // aqui pones la url
-    $tiempo_espera = 3; // Aquí se configura cuántos segundos hasta la actualización.
+    $tiempo_espera = 0; // Aquí se configura cuántos segundos hasta la actualización.
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");
   }elseif ($fila['ID_Roles']==2) {
     $url ="http://localhost/iniciousuarios.html"; // aqui pones la url
-    $tiempo_espera = 3; // Aquí se configura cuántos segundos hasta la actualización.
+    $tiempo_espera = 0; // Aquí se configura cuántos segundos hasta la actualización.
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");
 
   }else {
     $url ="http://localhost/inicioexpertos.html?nickname=$nickname"; // aqui pones la url
-    $tiempo_espera = 3; // Aquí se configura cuántos segundos hasta la actualización.
+    $tiempo_espera = 0; // Aquí se configura cuántos segundos hasta la actualización.
     // Declaramos la funcion apra la redirección
     header("refresh: $tiempo_espera; url=$url");
 

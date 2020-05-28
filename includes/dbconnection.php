@@ -1,7 +1,7 @@
 <?php
 
 $usuario = "felipe";
-$contrasena = "cendrero2811";  // en mi caso tengo contraseña pero en casa caso introducidla aquí.
+$contrasena = "1234";  // en mi caso tengo contraseña pero en casa caso introducidla aquí.
 $servidor = "localhost";
 $basededatos = "foro_expertos";
 

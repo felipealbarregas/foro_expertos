@@ -21,10 +21,7 @@ width:80%;
    background:  #bbe2f9;
    font-size: 40px;
 }
-td{
-  width:80%;
 
-}
 .tema{
 
   font-size: 20px;
@@ -45,4 +42,12 @@ td{
   background:  #bbe2f9;
   font-size:30px;
   color: #2175bc;
+}
+
+#formulario{
+  background:  #white;
+  height:70%;
+  width:80%;
+   top:40%;
+   left: 10%;
 }

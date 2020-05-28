@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <title>Foro Expertos su lugar de busqueda</title>
+<link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
+<link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
+<link rel="stylesheet" type="text/css" href="../css/styletabla1.css">
+<script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+<script src ="js/obtenersubcategoriausuario.js" type="text/javascript"></script>
+<script>
+window.onload = function() {
+var id_sub=sessionStorage.getItem("idsubcategoria");
+$("#fecha").val(sessionStorage.getItem("fecha"));
+$("#mensaje").val(sessionStorage.getItem("mensaje"));
+  var parametros = {"id":id_sub};
+$.ajax({
+   type: "GET",
+   url: '../php/obtenernombresubcategoria.php',
+   dataType: "json",
+   data: parametros,
+
+   success: function(data){
+          $.each(data,function(i,item) {
+          $("#subcategoria").append(item.subcategoria_nombre);
+   });
+   },
+   error: function(data) {
+     alert('error');
+   }
+ });
+   var parametros1 = {"id":sessionStorage.getItem("idusuario")};
+ $.ajax({
+    type: "GET",
+    url: '../php/obtenerusuario.php',
+    dataType: "json",
+    data: parametros1,
+
+    success: function(data){
+           $.each(data,function(i,item) {
+          $("#usuario").append(item.nickname);
+    });
+    },
+    error: function(data) {
+      alert('error');
+    }
+  });
+}
+
+</script>
+</head>
+<body>
+  <header id="main-header">
+    <img src="../imagenes/logo.png"></img>
+    <a class="boton_personalizado" href="registrar.html">Registrarse</a>
+        <a class="boton_personalizado1" href=loguearse.html>Loguearse</a>
+    <form id="buscar" action="" method="">
+      <input type="search" placeholder="Buscar...">
+      <button>Buscar</button>
+    </form>
+  </header>
+
+  <ul id="menubar">
+  <li><a href="iniciousuarios.html">Inicio</a></li>
+  <li><a href="realizarpreguntas.html">Preguntar</a></li>
+  <li><a href="vermispreguntas.html">Mis Preguntas</a></li>
+  <li><a href="php/enviarcorreo.php">Contacto</a></li>
+  </ul>
+
+
+
+
+  <h1>Respuestas al Mensaje</h1>
+<div id="contenedor">
+  <table  id="tablamensajes">
+    <thead>
+      <tr>
+         <th id="iniciar" colspan="3" >Mensajes</th>
+      </tr>
+    </thead>
+      <tbody id="contenido">
+          <tr><td rowspan="6" background-color="blue" id="usuario"></td><td><strong>Subcategoria:</strong></td><td id="subcategoria"></td></tr>
+        <tr><td><strong>Tema:</strong></td><td class="tema"><script>document.write(sessionStorage.getItem("tema"));</script></td></tr>
+        <tr><td><strong>Fecha:</strong></td><td>3</td><td>4</td><td>5</td></tr>
+        <tr><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+        <tr><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+        <tr><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+      </tbody>
+    </table>
+</div>
+
+
+
+
+</body>
+  <footer>
+  <div id="footer">
+      <!--    <tr><td width="20px"><strong>Tema:</strong><td class="tema"><script>document.write(sessionStorage.getItem("tema"));</script></td></tr>\-->
+          <p>&#169; 2020 All Rights Reserverd</p>
+          <p> Diseñado por Felipe Cendrero Diaz</p>
+            <img id="footerimg" src="/imagenes/logocentro.jpg"/>
+   </div>
+  </footer>
+  </html>

@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
 <link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
 <link rel="stylesheet" type="text/css" href="../css/styletabla.css">
+
 <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
 <script>
 window.onload = function() {
@@ -14,15 +15,20 @@ var nickname=sessionStorage.getItem("usuario");
   var parametros = {"nickname":nickname};
 $.ajax({
    type: "GET",
-   url: '../php/obtenerpreguntas.php',
+   url: '../php/obtenerpreguntascategoria.php',
    dataType: "json",
    data: parametros,
 
    success: function(data){
           $.each(data,function(i,item) {
-            $('#contenido').append('<div id="cabecera"><hr id="cabecera">Mensaje<hr id="cabecera"></div>');
+            $('#contenido').append('<div id="cabecera"><hr id="cabecera"><a href=mostrarmensaje.html>Mensaje<a><hr id="cabecera"></div>');
             $('#contenido').append('<tr class="tema"><td><strong>Tema:</strong>  ' + item.tema + '</td></tr><tr><td class="fecha"><strong>Fecha:  </strong>' + item.fecha + '</td></tr><tr><td class="mens"><strong>Mensaje:</strong> <br><br>' + item.mensaje + '</td></tr>');
-
+            sessionStorage.setItem("ID", item.id);
+            sessionStorage.setItem("idusuario",item.idusuario);
+            sessionStorage.setItem("idsubcategoria",item.idsubcategoria);
+            sessionStorage.setItem("tema", item.tema);
+            sessionStorage.setItem("fecha", item.fecha);
+            sessionStorage.setItem("mensaje",item.mensaje);
    });
    },
    error: function (request, status, error) {
@@ -32,6 +38,58 @@ $.ajax({
 
 }
 
+function desplegarmenu(){
+  // Obtenemos la referencia del elemento body
+  var body = document.getElementsByTagName("body")[0];
+  // Creamos un elemento <table> y un elemento <tbody>
+  var tabla = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // Creamos las celdas
+  for (var i = 0; i < 1; i++){
+    // Creamos las hileras de la tabla
+    var fila = document.createElement("tr");
+    for (var j = 0; j < 1 ; j++) {
+      // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var url = "<a href='completarperfil.html' onmouseout='eliminartabla()'>Mi perfil</a>";
+      celda.innerHTML=url;
+      fila.appendChild(celda);
+
+    }
+
+  // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+  tblBody.appendChild(fila);
+  }
+  for (var i = 0; i < 1; i++) {
+    // Creamos las hileras de la tabla
+    var fila = document.createElement("tr");
+    for (var j = 0; j < 1 ; j++) {
+      // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var url = "<a href='index.html' onmouseout='eliminartabla()'>Cerrar Sesion</a>";
+      celda.innerHTML=url;
+      fila.appendChild(celda);
+    }
+  // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+  tblBody.appendChild(fila);
+  }
+  // posicionamos el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+
+  tabla.setAttribute("id", "tabla");
+
+  var result = document.getElementById("menubar");
+  result.appendChild(tabla);
+
+}
 </script>
 </head>
 <body>
@@ -47,9 +105,11 @@ $.ajax({
 
   <ul id="menubar">
     <li><a href="inicioexpertos.html">Inicio</a></li>
-    <li><a href="realizarpreguntas.html">Preguntar</a></li>
-    <li><a href="vermispreguntas.html">Mis Preguntas</a></li>
+    <li><a href="preguntascategorias.html">Preguntas</a></li>
+    <li><a href="vermisvaloraciones.html">Mis Valoraciones</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
+  <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="desplegarmenu()"></li>
+<li id="nickname"><script>var nickname = sessionStorage.getItem("usuario"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 
 <br>
@@ -60,10 +120,8 @@ $.ajax({
   <table  id="tablamensajes">
  		<thead>
  		  <tr>
- 		     <th id="iniciar">Mis mensajes</th>
+ 		     <th id="iniciar">Preguntas para tu categoria</th>
  		  </tr>
-
-
  		</thead>
  			<tbody id="contenido">
 

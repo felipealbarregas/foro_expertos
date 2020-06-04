@@ -9,25 +9,36 @@
 <link rel="stylesheet" type="text/css" href="../css/styletabla1.css">
 <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
 <script src="js/creartabla.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="js/v2.3.2/jquery.rateyo.css"/>
+  <script src="js/v2.3.2/jquery.rateyo.js"></script>
+  <script src="js/funciones.js" type="text/javascript"></script>
 <script src ="js/obtenersubcategoriausuario.js" type="text/javascript"></script>
 <script>
+var contador=0;
 window.onload = function() {
-
 $("#fecha").val(sessionStorage.getItem("fecha"));
 $("#mensaje").val(sessionStorage.getItem("mensaje"));
 $("#usu").val(sessionStorage.getItem("usuario"));
 $("#temapre").val(sessionStorage.getItem("tema"));
-$("#idpregunta").val(sessionStorage.getItem("id"));
+
 $("#idsubcategoria").val(sessionStorage.getItem("idsubcategoria"));
 
 mostrarsubcategoria();
 mostrarusuario();
 mostrarrespuesta();
 comprobarusuario(3);
+
 }
+
+
+
+
 function mostrarsubcategoria(){
   var parametros = {"id":sessionStorage.getItem("idsubcategoria")};
 
+function pintarestrellas(){
+
+}
 
 $.ajax({
    type: "GET",
@@ -48,7 +59,8 @@ $.ajax({
 }
 
 function mostrarusuario(){
-   var parametros1 = {"id":sessionStorage.getItem("idusuario")};
+  var idpreguntar=parametroURL("id");
+   var parametros1 = {"id":idpreguntar};
  $.ajax({
     type: "GET",
     url: '../php/obtenerusuario.php',
@@ -66,9 +78,9 @@ function mostrarusuario(){
     }
   });
 }
-
 function mostrarrespuesta(){
-  var parametros2 = {"id":sessionStorage.getItem("id")};
+  var idpregunta = parametroURL('id')
+  var parametros2 = {"id": idpregunta};
 $.ajax({
  type: "GET",
  url: '../php/obtenerrespuesta.php',
@@ -77,10 +89,24 @@ $.ajax({
 
  success: function(data){
         $.each(data,function(i,item) {
-          $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas<hr id="rayascolor"></div>');
+          $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas <div id="rateYo'+i+'"></div><hr id="rayascolor"></div>');
           $('#contenidoresp').append('<tr><td rowspan="2" id="usuarioresp">'+item.nickname+'</td><td><strong>Fecha:</strong></td><td id="fecharesp">'+item.fecha+'</td></tr>  <tr><td><strong>Mensaje:</strong></td><td id="mensajeresp">'+item.mensaje+'</td></tr></br>');
 
- });
+          $(function () {
+          $("#rateYo"+i).rateYo({
+            rating: 0.5,
+             starWidth: "20px",
+            spacing   : "5px",
+            fullStar: true,
+            multiColor: {
+               "startColor": "#FF0000", //RED
+              "endColor"  : "#00FF00"  //GREEN
+          }
+          });
+        });
+        contador++;
+
+});
  },
  error: function(data) {
    alert('error');
@@ -98,6 +124,19 @@ $('#formularioaenviar').submit(function (ev) {
     success: function (data) { alert('Datos enviados !!!'); }
   });
 });
+
+$(function () {
+      for(var i = 0 ; i < contador ; i++){
+  $("#rateYo"+i).rateYo()
+              .on("rateyo.change", function (e, data) {
+
+                var rating = data.rating;
+                alert(rating);
+              });
+}
+});
+
+
 </script>
 </head>
 <body>
@@ -112,9 +151,9 @@ $('#formularioaenviar').submit(function (ev) {
   </header>
 
   <ul id="menubar">
-    <li><a href="inicioexpertos.html">Inicio</a></li>
-    <li><a href="preguntascategoria.html">Preguntas</a></li>
-    <li><a href="vermisvaloraciones.html">Mis Valoraciones</a></li>
+    <li><a href="iniciousuarios.html">Inicio</a></li>
+    <li><a href="realizarpreguntas.html">Preguntar</a></li>
+    <li><a href="vermispreguntas.html">Mis Preguntas</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
   <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="comprobarusuario(3)"></li>
   <li id="nickname"><script>var nickname = sessionStorage.getItem("usuario"); document.getElementById("nickname").innerHTML= nickname;</script></li>
@@ -147,27 +186,6 @@ $('#formularioaenviar').submit(function (ev) {
    			</tbody>
    		</table>
 </div>
-
-<form id="formulario" action="/php/agregarrespuesta.php" method="POST" >
-
-  <input type="hidden" id="idpregunta" name="idpregunta">
-  <input type="hidden" id="idsubcategoria" name="idsubcategoria">
-  <label for="usuario">Nickname * </label>
-  <input  id="usu" type="text" name="usuario" class="form-input" required/>
-
-  <label for="subcategoria">Subcategoria * </label>
-  <input   id="subcate" name="Subcategoria" type="text" required/>
-
-  <label for="tema">Tema * </label>
-  <input id="temapre" type="text" name="temapre" class="form-input" required/>
-  <br>
-  <label for="mensaje">Mensaje *</span></label>
-  <textarea id="mensajeres" name="mensajeresp"></textarea>
-
- <input  name="submit" type="submit" value="Enviar" />
-
-</form>
-
 
 
 

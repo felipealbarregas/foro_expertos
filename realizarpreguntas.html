@@ -29,17 +29,20 @@ $("#usu").val(sessionStorage.getItem("usuario"));
   </header>
 
   <ul id="menubar">
-  <li><a href="iniciousuarios.html">Inicio</a></li>
-  <li><a href="realizarpreguntas.html">Preguntar</a></li>
-  <li><a href="vermispreguntas.html">Mis Preguntas</a></li>
+    <li><a href="iniciousuarios.html">Inicio</a></li>
+    <li><a href="realizarpreguntas.html">Preguntar</a></li>
+    <li><a href="vermispreguntas.html">Mis Preguntas</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
+  <li>
+    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="comprobarusuario(3)"></li>
+  <li id="nickname"><script>var nickname = parametroURL("nickname"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 
 
 
 <main id="cuerpo">
 
-    <h1 id=titulo> Registro de Usuarios</h1>
+    <h1 id=titulo> Registro de Preguntas</h1>
 
     <form id="formulario" action="php/agregarmensaje.php" method="POST">
 

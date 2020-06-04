@@ -1,0 +1,82 @@
+"ID","Nombre","Descripcion"
+"1","Medicina","Categoria general de medicina"
+"2","Informatica","Categoria general de informatica"
+"ID","ID_persona","Nickname","ID_Subcategoria","ID_Profesion","activo","Puntuacion"
+"25","19","fecendrer","2","2","0","0"
+"31","22","riodelobo","1","1","1","0"
+"32","25","emejota29","3","3","1","0"
+"ID","ID_Roles","Nombre","Apellidos","Provincia","Ciudad","Nickname","Password","Email","hash","activo","Fecha"
+"19","1","Felipe","Cendrero Diaz","Badajoz","Calamonte","fecendrer","1234","felipealbarregas@gmail.com","d93ed5b6db83be78efb0d05ae420158e","1","0000-00-00 00:00:00"
+"21","2","Jonh","Cabeza Cendrero","Badajoz","Calamonte","jonhcito","guau","felipegarba2011@hotmail.es","53e3a7161e428b65688f14b84d61c610","1","0000-00-00 00:00:00"
+"22","3","Guadalupe","Cabeza Fernandez","Badajoz","Calamonte","riodelobo","1234","felipegarba2011@hotmail.es","d79aac075930c83c2f1e369a511148fe","1","0000-00-00 00:00:00"
+"23","2",,,,,,,,"389bc7bb1e1c2a5e7e147703232a88f6","0","0000-00-00 00:00:00"
+"24","2","roberto","hermoso","Caceres","Caceres","robertito","1234","foroexpertofelipe@gmail.com","f4f6dce2f3a0f9dada0c2b5b66452017","1","0000-00-00 00:00:00"
+"25","3","emejota","trinidad","Badajoz","Alange","emejota29","1234","mariajosetf1994@gmail.com","287e03db1d99e0ec2edb90d079e142f3","1","2020-06-01 17:26:08"
+"ID","ID_Usuario","ID_Subcategoria","Tema","Fecha","Mensaje"
+"3","2","3","Comprobacion inserccion","2020-05-26 00:00:00","estoy comprobando que se inserta correctamente el mensaje"
+"4","2","3","Comprobacion inserccion","2020-05-26 00:00:00","estoy comprobando que se inserta correctamente el mensaje"
+"5","2","3","Comprobacion inserccion","2020-05-26 00:00:00","asdasdasdasdsadsadasdsa sdad
+asdasdasd
+asdasdasd
+asdsadasdsad
+asdasdasd
+asdgsfgdfgdgfghsgdh
+fdgdfgfdgfdsg
+fdgfsdgsdfgsdfg
+fdgfsdgsdfgfdsg
+sdfdsafsdafadsf
+sdfdsafsadfsadfadsf
+sdfasdfasdf
+jasdjasjdjsad
+jasjdjasdjasd
+jasdjajsdjasjd
+aasdjasjdjasdjasd
+ajsadjasjdjasjd
+asdjasjdjasdjsa
+jasdjsajdjsadj
+asdjassjdjasjdas
+asdjasjdjsadj
+asdjasjdjasdj
+asdjasjdjasjdsad
+jasdjjasdjajsd
+asjdajsdjasjdjasd
+asdjasjdjsajdas
+jasdjasjdjasdjsa
+fjasfjsjdf
+jasdiaosdjdfj
+asdjsdfjsdf
+asdjdjfja
+jasdjasjda
+"
+"6","4","2","PHP","2020-05-26 00:00:00","Como puedo hacer en php una consulta sql con varios where"
+"7","4","2","Realizar HTML","2020-05-27 09:24:02","Buenos dias quisiera saber si hay algun curso de HTML5"
+"8","4","2","Realizar error en sql","2020-05-27 10:11:04","Tengo una duda, como tengo en la base de datos un valor unique y estoy agregando un nuevo valor que ya esta repetido quiero comprobar si me lanza el error y continua ejecutandose o se para el programa"
+"9","2","1","Dolor en la espalda","2020-05-27 19:39:52","Tengo un dolor en la espalda que me lleva matando siete dias, y me cai el jueves pasado"
+"ID","ID_Subcategoria","Nombre","Descripcion"
+"1","1","Medico de familia y comunitaria","Medico de familia"
+"2","2","Programador front-end","Programador web en la parte cliente"
+"3","3","Programador php","Programadores de php"
+"4","3","programador Python","Programadores python"
+"5","4","Medico Internista","Medico dedicado a la medicina Interna"
+"ID","ID_pregunta","ID_experto","Fecha","Mensaje","Valoracion"
+"1","9","31","2020-05-30 13:19:46","tomate un ibuprofeno y bebe mucha agua si ves que estas muy mal te pegas un tiro en la cabeza como los caballos cuando se caen estorbo","0"
+"2","9","25","2020-06-02 12:11:31","tomate un paracetamol mejor","0"
+"ID","Nombre"
+"1","administrador"
+"2","usuario"
+"3","experto"
+"ID","ID_categoria","Nombre","Descripcion"
+"1","1","Medicina Familiar","Subcategoria destinana a la medicina de familia"
+"2","2","Programacion Web","Subcategoria de programacion web"
+"3","2","Programador back-end","Pogramacion de back-end"
+"4","1","Internista","Subcategoria dedicada a la medicina interna"
+"ID","Palabra"
+"5","en"
+"4","error"
+"2","HTML"
+"1","Realizar"
+"6","sql"
+"ID","ID_Personas"
+"2","21"
+"3","23"
+"4","24"

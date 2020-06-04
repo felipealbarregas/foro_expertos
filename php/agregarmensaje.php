@@ -31,8 +31,8 @@ foreach($tesauro as $val) {
 
 
 mysqli_close($conexion);
-$url ="http://localhost/iniciousuarios.html"; // aqui pones la url
-$tiempo_espera = 3; // Aquí se configura cuántos segundos hasta la actualización.
+$url ="http://localhost/vermispreguntas.html"; // aqui pones la url
+$tiempo_espera = 0; // Aquí se configura cuántos segundos hasta la actualización.
 // Declaramos la funcion apra la redirección
 header("refresh: $tiempo_espera; url=$url");
 ?>

@@ -23,7 +23,7 @@ $.ajax({
           $.each(data,function(i,item) {
             $('#contenido').append('<div id="cabecera"><hr id="cabecera"><a href=mostrarmensaje.html>Mensaje<a><hr id="cabecera"></div>');
             $('#contenido').append('<tr class="tema"><td><strong>Tema:</strong>  ' + item.tema + '</td></tr><tr><td class="fecha"><strong>Fecha:  </strong>' + item.fecha + '</td></tr><tr><td class="mens"><strong>Mensaje:</strong> <br><br>' + item.mensaje + '</td></tr>');
-            sessionStorage.setItem("ID", item.id);
+            sessionStorage.setItem("id", item.id);
             sessionStorage.setItem("idusuario",item.idusuario);
             sessionStorage.setItem("idsubcategoria",item.idsubcategoria);
             sessionStorage.setItem("tema", item.tema);
@@ -105,7 +105,7 @@ function desplegarmenu(){
 
   <ul id="menubar">
     <li><a href="inicioexpertos.html">Inicio</a></li>
-    <li><a href="preguntascategorias.html">Preguntas</a></li>
+    <li><a href="preguntascategoria.html">Preguntas</a></li>
     <li><a href="vermisvaloraciones.html">Mis Valoraciones</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
   <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="desplegarmenu()"></li>

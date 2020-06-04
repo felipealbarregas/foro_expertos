@@ -13,7 +13,6 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $resultado = $conexion->query($consulta)or die($conexion->error);
 while($data1 = mysqli_fetch_array($resultado)){
       $usuario =$array=array(
-          'id'=>$data1['ID'],
           'nickname'=>$data1['Nickname'],
       );
     }

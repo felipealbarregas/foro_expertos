@@ -16,13 +16,15 @@ if(isset($_GET['nickname']) && !empty($_GET['nickname'])){
   $id =$fila1['ID'];
 
 
-      $consulta = "SELECT Tema, Fecha,  Mensaje  FROM preguntas where ID_Usuario='$id'";
+      $consulta = "SELECT ID,Tema, Fecha,  Mensaje,ID_subcategoria  FROM preguntas where ID_Usuario='$id'";
       $resultado = $conexion->query($consulta)or die($conexion->error);
   while($data = mysqli_fetch_array($resultado)){
       $mensajes[] =$array=array(
           'tema'=>$data['Tema'],
           'fecha'=>$data['Fecha'],
           'mensaje'=>$data['Mensaje'],
+          'idpregunta'=>$data['ID'],
+          'idsubcategoria'=>$data['ID_subcategoria']
       );
   }
 

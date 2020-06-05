@@ -12,6 +12,7 @@
  <link rel="stylesheet" href="js/v2.3.2/jquery.rateyo.css"/>
   <script src="js/v2.3.2/jquery.rateyo.js"></script>
   <script src="js/funciones.js" type="text/javascript"></script>
+  <script src="js/creartabla.js" type="text/javascript"></script>
 <script src ="js/obtenersubcategoriausuario.js" type="text/javascript"></script>
 <script>
 var contador=0;
@@ -26,7 +27,7 @@ $("#idsubcategoria").val(sessionStorage.getItem("idsubcategoria"));
 mostrarsubcategoria();
 mostrarusuario();
 mostrarrespuesta();
-comprobarusuario(3);
+
 
 }
 
@@ -91,7 +92,6 @@ $.ajax({
         $.each(data,function(i,item) {
           $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas <div id="rateYo'+i+'"></div><hr id="rayascolor"></div>');
           $('#contenidoresp').append('<tr><td rowspan="2" id="usuarioresp">'+item.nickname+'</td><td><strong>Fecha:</strong></td><td id="fecharesp">'+item.fecha+'</td></tr>  <tr><td><strong>Mensaje:</strong></td><td id="mensajeresp">'+item.mensaje+'</td></tr></br>');
-
           $(function () {
           $("#rateYo"+i).rateYo({
             rating: 0.5,
@@ -104,7 +104,27 @@ $.ajax({
           }
           });
         });
-        contador++;
+
+          $(function () {
+
+            var $rateYo = $("#rateYo"+i).rateYo();
+
+              $($rateYo).click(function () {
+
+                /* get rating */
+            var rating = $rateYo.rateYo("rating");
+
+            var parametros4 = {"rating": rating, "idrespuesta":item.idrespuesta};
+            $.ajax({
+               type: "GET",
+               url: '../php/introducirvaloracion.php',
+               dataType: "json",
+               data: parametros4,
+             });
+
+              });
+                });
+
 
 });
  },
@@ -115,26 +135,7 @@ $.ajax({
 }
 
 
-$('#formularioaenviar').submit(function (ev) {
-  alert($('#formularioaenviar').serialize());
-  $.ajax({
-    type: "GET",
-    url: "php/agregarrespuesta.php",
-    data: $('#formularioaenviar').serialize(),
-    success: function (data) { alert('Datos enviados !!!'); }
-  });
-});
 
-$(function () {
-      for(var i = 0 ; i < contador ; i++){
-  $("#rateYo"+i).rateYo()
-              .on("rateyo.change", function (e, data) {
-
-                var rating = data.rating;
-                alert(rating);
-              });
-}
-});
 
 
 </script>

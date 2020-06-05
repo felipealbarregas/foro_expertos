@@ -56,3 +56,9 @@ margin-top: 9px;
  text-decoration: none;
  color: #fff;
 }
+#valoraciones{
+
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}

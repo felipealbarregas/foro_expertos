@@ -34,7 +34,6 @@ h3{
   width:15%;
   border: solid 1px;
   border-color:  #2175bc;
-
 }
 #tabla a {
     color:black;
@@ -61,4 +60,42 @@ margin-top: 9px;
   position: absolute;
   top: 50%;
   left: 40%;
+}
+#zone{
+  position: absolute;
+  top:50%;
+  left: 20%;
+
+}
+#zone1{
+  position: absolute;
+  top:70%;
+  left: 20%;
+}
+#datos{
+  position: absolute;
+  top:50%;
+  height: 20px;
+  left: 20%;
+}
+#tiempo{
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+#enviar{
+  text-decoration: none;
+  font-weight: 600;
+  position: absolute;
+  top:60%;
+  left:30%;
+  font-size:20px;
+  height:30px;
+  width: 150px;
+  text-align:center;
+font-family: helvetica;
+color: black;
+margin: 10px;
+
+ border: 3px solid #2175bc;
 }

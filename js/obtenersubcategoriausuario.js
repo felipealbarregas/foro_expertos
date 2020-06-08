@@ -19,6 +19,7 @@ $.ajax({
    },
    error: function(data) {
      alert('error');
+  
    }
  });
 

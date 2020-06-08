@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <title>Foro Expertos su lugar de busqueda</title>
+<link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
+<link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
+<link rel="stylesheet" type="text/css" href="../css/stylebody.css">
+<script type="text/javascript" src="js/creartabla.js"></script>
+<script type="text/javascript">
+window.onload(){
+
+}
+
+</script>
+</head>
+<body>
+  <header id="main-header">
+    <img src="../imagenes/logo.png"></img>
+    <a class="boton_personalizado" href="registrar.html">Registrarse</a>
+        <a class="boton_personalizado1" href=loguearse.html>Loguearse</a>
+    <form id="buscar" action="" method="">
+      <input type="search" placeholder="Buscar...">
+      <button>Buscar</button>
+    </form>
+  </header>
+
+  <ul id="menubar">
+  <li><a href="index.html">Inicio</a></li>
+  <li><a href="autorizarexpertos.html">Autorizar expertos</a></li>
+  <li><a href="verestadistica.html">Ver Estadisticas</a></li>
+  <li>
+    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="desplegarmenu()"></li>
+  <li id="nickname"><script>var nickname = parametroURL("nickname"); document.getElementById("nickname").innerHTML= nickname;</script></li>
+  </ul>
+
+
+
+<main id="cuerpo">
+
+    <h1 id=titulo> Dar de alta a Expertos</h1>
+
+    <form id="formulario" action="php/registrousu.php" method="POST">
+
+
+      <label for="expertos">Expertos* </label>
+      <select id="expertos" name="expertos"></select>
+
+
+     <input  name="submit" type="submit" value="Suscribirse" />
+
+  </form>
+
+
+</main>
+</body>
+  <footer>
+  <div id="footer">
+
+          <p>&#169; 2020 All Rights Reserverd</p>
+          <p> Diseñado por Felipe Cendrero Diaz</p>
+            <img id="footerimg" src="/imagenes/logocentro.jpg"/>
+   </div>
+  </footer>
+  </html>

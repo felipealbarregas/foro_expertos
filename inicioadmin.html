@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
 <script src="js/funciones.js" type="text/javascript"></script>
 <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/creartabla.js"></script>
 
 </head>
 <body>
@@ -24,10 +25,10 @@
 
   <ul id="menubar">
   <li><a href="index.html">Inicio</a></li>
-  <li><a href="autorizarexpertos.html">Utorizarexpertos</a></li>
+  <li><a href="autorizarexpertos.html">Autorizar expertos</a></li>
   <li><a href="verestadistica.html">Ver Estadisticas</a></li>
   <li>
-    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="comprobarusuario(2)"></li>
+    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="desplegarmenu()"></li>
   <li id="nickname"><script>var nickname = parametroURL("nickname"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 

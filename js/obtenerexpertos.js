@@ -1,5 +1,5 @@
 
-
+function obtenerexperto(){
 $.ajax({
    type: "GET",
    url: '../php/obtenerexpertos.php',
@@ -8,7 +8,7 @@ $.ajax({
 
    success: function(data){
           $.each(data,function(i,item) {
-          $("#expertos").append('<option value='+item.categoria_id+'>'+item.categoria_nombre+'</option>');
+          $("#expertos").append('<option value='+item.experto_id+'>'+item.expertos_nickname+'</option>');
           return item;
    });
    },
@@ -16,3 +16,4 @@ $.ajax({
      alert('error');
    }
  });
+}

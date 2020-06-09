@@ -119,3 +119,10 @@ margin-top: 9px;
 {
   color: black;
 }
+#formulario2 {
+  position: absolute;
+	width:100%;
+  height: 200px;
+	border-radius:10px;
+	background-color:#bbe2f9;
+}

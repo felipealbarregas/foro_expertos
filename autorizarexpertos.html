@@ -8,9 +8,29 @@
 <link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
 <link rel="stylesheet" type="text/css" href="../css/stylebody.css">
 <script type="text/javascript" src="js/creartabla.js"></script>
+<script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/obtenerexpertos.js"></script>
+<script type="text/javascript" src="js/funciones.js"></script>
 <script type="text/javascript">
-window.onload(){
+window.onload=obtenerexperto();
 
+function actualizarexperto(){
+    var experto=document.getElementById("expertos").value;
+      var parametros = {"id":experto};
+    $.ajax({
+       type: "GET",
+       url: '../php/actualizarexperto.php',
+        data: parametros,
+       dataType: "json",
+
+       success: function(data){
+              $.each(data,function(i,item) {
+              $("#expertos").append('<option value='+item.experto_id+'>'+item.expertos_nickname+'</option>');
+              return item;
+       });
+       },
+     });
+     event.preventDefault();
 }
 
 </script>
@@ -41,14 +61,14 @@ window.onload(){
 
     <h1 id=titulo> Dar de alta a Expertos</h1>
 
-    <form id="formulario" action="php/registrousu.php" method="POST">
+    <form id="formulario2">
 
 
       <label for="expertos">Expertos* </label>
       <select id="expertos" name="expertos"></select>
 
 
-     <input  name="submit" type="submit" value="Suscribirse" />
+     <input  name="submit" type="submit" value="Activar" onclick="actualizarexperto()" />
 
   </form>
 

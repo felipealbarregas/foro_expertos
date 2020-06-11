@@ -27,7 +27,7 @@ $.ajax({
 
  success: function(data){
         $.each(data,function(i,item) {
-          $("#valoraciones").append('<h2><strong> valoracion media:</strong><h2> <div id="media"></div>');
+          $("#valoraciones").append('<h2><strong> Valoracion Media:</strong><h2> <div id="media"></div>');
         $("#media").append(item);
 
  });
@@ -136,7 +136,7 @@ function comprobarusuario(proceso){
                 // texto sea el contenido de <td>, ubica el elemento <td> al final
                 // de la hilera de la tabla
                 var celda = document.createElement("td");
-                var url = "<a href='completarperfil.html' onmouseout='eliminartabla()'>Mi perfil</a>";
+                var url = "<a href='verperfil.html' onmouseout='eliminartabla()'>Mi perfil</a>";
                 celda.innerHTML=url;
                 fila.appendChild(celda);
 
@@ -180,9 +180,7 @@ function comprobarusuario(proceso){
         var li=document.createElement('li');
           li.innerHTML="<li><a href='preguntascategoria.html'>Preguntas</a></li>";
           result.appendChild(li);
-          var li=document.createElement('li');
-            li.innerHTML="<li><a href='vermirespuestas.html'>Respuestas</a></li>";
-            result.appendChild(li);
+
           var li=document.createElement('li');
             li.innerHTML="<li><a href='vermisvaloraciones.html'>valoraciones</a></li>";
             result.appendChild(li);
@@ -251,3 +249,36 @@ function eliminartabla(){
 $("#tabla").remove();
 
 }
+
+$(document).on('click', '#search', function () {
+  list=[];
+  $.ajax({
+   type: "GET",
+   url: '../php/obtenerpalabras.php',
+   dataType: "json",
+
+   success: function(data){
+          $.each(data,function(i,item) {
+          list.push(item.palabra);
+
+   });
+   },
+   error: function (request, status, error) {
+        alert(error);
+    }
+  });
+      $(this).autocomplete({
+          //source take a list of data
+          source: list,
+          minLength: 1//min = 2 characters
+      });
+  });
+
+  $(document).on('click','#btnbuscar',function(){
+
+    var palabra = document.getElementById("search").value;
+        sessionStorage.setItem("palabra", palabra);
+event.preventDefault();
+  setTimeout("location.href='mostrarmensajepalabra.html'", 1000);
+
+  });

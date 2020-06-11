@@ -9,168 +9,15 @@
 <link rel="stylesheet" type="text/css" href="../css/styleexpertos.css">
 <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
 <script src="js/funciones.js" type="text/javascript"></script>
+<script src="js/creartabla.js" type="text/javascript"></script>
+<link href="js/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 
 
 window.onload=comprobarusuario(2);
 
-  function comprobarusuario(proceso){
-    var nickname = parametroURL("nickname");
-    $.ajax({
-        url:'http://localhost/php/comprobarexperto.php',
-        data: {nickname: nickname},
-          type : 'POST',
-        success: function(respuesta){
-          if(proceso==1){
-          if (respuesta==1){
-              // Obtenemos la referencia del elemento body
-              var body = document.getElementsByTagName("body")[0];
-              // Creamos un elemento <table> y un elemento <tbody>
-              var tabla = document.createElement("table");
-              var tblBody = document.createElement("tbody");
-              // Creamos las celdas
-              for (var i = 0; i < 1; i++){
-                // Creamos las hileras de la tabla
-                var fila = document.createElement("tr");
-                for (var j = 0; j < 1 ; j++) {
-                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
-                  // texto sea el contenido de <td>, ubica el elemento <td> al final
-                  // de la hilera de la tabla
-                  var celda = document.createElement("td");
-                  var url = "<a href='verperfil.html'  onmouseout='eliminartabla()'>Mi perfil</a>";
-                  celda.innerHTML=url;
-                  fila.appendChild(celda);
 
-                }
-                // agregamos la hilera al final de la tabla (al final del elemento tblbody)
-                tblBody.appendChild(fila);
-              }
-                // Creamos las celdas
-                for (var i = 0; i < 1; i++){
-                  // Creamos las hileras de la tabla
-                  var fila = document.createElement("tr");
-                  for (var j = 0; j < 1 ; j++) {
-                    // Crea un elemento <td> y un nodo de texto, hace que el nodo de
-                    // texto sea el contenido de <td>, ubica el elemento <td> al final
-                    // de la hilera de la tabla
-                    var celda = document.createElement("td");
-                      var nickname = parametroURL("nickname");
-                    var url = "<a href='completarperfil.html?nickname="+nickname+"'  onmouseout='eliminartabla()'>Completar Perfil</a>";
-                    celda.innerHTML=url;
-                    fila.appendChild(celda);
-
-                  }
-              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
-              tblBody.appendChild(fila);
-              }
-
-              for (var i = 0; i < 1; i++) {
-                // Creamos las hileras de la tabla
-                var fila = document.createElement("tr");
-                for (var j = 0; j < 1 ; j++) {
-                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
-                  // texto sea el contenido de <td>, ubica el elemento <td> al final
-                  // de la hilera de la tabla
-                  var celda = document.createElement("td");
-                  var url = "<a href='cerrarsesion.html'  onmouseout='eliminartabla()'>Cerrar Sesion</a>";
-                  celda.innerHTML=url;
-                  fila.appendChild(celda);
-                }
-              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
-              tblBody.appendChild(fila);
-              }
-              // posicionamos el <tbody> debajo del elemento <table>
-              tabla.appendChild(tblBody);
-              // appends <table> into <body>
-              body.appendChild(tabla);
-              // modifica el atributo "border" de la tabla y lo fija a "2";
-
-              tabla.setAttribute("id", "tabla");
-
-              var result = document.getElementById("menubar");
-              result.appendChild(tabla);
-
-          }else if(respuesta!=1){
-              // Obtenemos la referencia del elemento body
-              var body = document.getElementsByTagName("body")[0];
-              // Creamos un elemento <table> y un elemento <tbody>
-              var tabla = document.createElement("table");
-              var tblBody = document.createElement("tbody");
-
-              // Creamos las celdas
-              for (var i = 0; i < 1; i++){
-                // Creamos las hileras de la tabla
-                var fila = document.createElement("tr");
-                for (var j = 0; j < 1 ; j++) {
-                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
-                  // texto sea el contenido de <td>, ubica el elemento <td> al final
-                  // de la hilera de la tabla
-                  var celda = document.createElement("td");
-                  var url = "<a href='completarperfil.html' onmouseout='eliminartabla()'>Mi perfil</a>";
-                  celda.innerHTML=url;
-                  fila.appendChild(celda);
-
-                }
-
-              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
-              tblBody.appendChild(fila);
-              }
-              for (var i = 0; i < 1; i++) {
-                // Creamos las hileras de la tabla
-                var fila = document.createElement("tr");
-                for (var j = 0; j < 1 ; j++) {
-                  // Crea un elemento <td> y un nodo de texto, hace que el nodo de
-                  // texto sea el contenido de <td>, ubica el elemento <td> al final
-                  // de la hilera de la tabla
-                  var celda = document.createElement("td");
-                  var url = "<a href='cerrarsesion.html' onmouseout='eliminartabla()'>Cerrar Sesion</a>";
-                  celda.innerHTML=url;
-                  fila.appendChild(celda);
-                }
-              // agregamos la hilera al final de la tabla (al final del elemento tblbody)
-              tblBody.appendChild(fila);
-              }
-              // posicionamos el <tbody> debajo del elemento <table>
-              tabla.appendChild(tblBody);
-              // appends <table> into <body>
-              body.appendChild(tabla);
-              // modifica el atributo "border" de la tabla y lo fija a "2";
-
-              tabla.setAttribute("id", "tabla");
-
-              var result = document.getElementById("menubar");
-              result.appendChild(tabla);
-
-
-          }
-        }else if (proceso==2) {
-          if(respuesta!=1){
-            var body = document.getElementsByTagName("body")[0];
-          var result = document.getElementById("menubar");
-          var li=document.createElement('li');
-            li.innerHTML="<li><a href='preguntascategoria.html'>Preguntas</a></li>";
-            result.appendChild(li);
-            var li=document.createElement('li');
-              li.innerHTML="<li><a href='vermirespuestas.html'>Respuestas</a></li>";
-              result.appendChild(li);
-            var li=document.createElement('li');
-              li.innerHTML="<li><a onclick='vervaloracion()'>valoracion</a></li>";
-              result.appendChild(li);
-        }
-      }
-        },
-        error: function(){
-          alert("no se puede");
-        },
-
-    });
-
-}
-
-function eliminartabla(){
-  $("#tabla").remove();
-
-}
 </script>
 
 </head>
@@ -178,21 +25,21 @@ function eliminartabla(){
   <header id="main-header">
     <img src="../imagenes/logo.png"></img>
     <a class="boton_personalizado" href="registrar.html">Registrarse</a>
-        <a class="boton_personalizado1" href=loguearse.html>Loguearse</a>
+        <a class="boton_personalizado1" href=loguearse.html>Iniciar Sesion</a>
     <form id="buscar" action="" method="">
-      <input type="search" placeholder="Buscar...">
-      <button>Buscar</button>
+      <input  id="search" type="search" placeholder="Buscar...">
+      <button id="btnbuscar">Buscar</button>
     </form>
   </header>
 
   <ul id="menubar">
-  <li><a href="../index.html">Inicio</a></li>
+  <li><a href="../inicioexpertos.html">Inicio</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
 
 
   <li>
-    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="comprobarusuario(1)"></li>
-  <li id="nickname"><script>var nickname = parametroURL("nickname"); document.getElementById("nickname").innerHTML= nickname;</script></li>
+    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="desplegarmenu(2)"></li>
+  <li id="nickname"><script>var nickname = sessionStorage.getItem("usuario"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 
     <h1>Bienvenido   <script>document.write(nickname); </script> </h1>

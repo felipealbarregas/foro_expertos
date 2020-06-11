@@ -12,7 +12,7 @@
 #tablamensajes{
 background:  #white;
 height:70%;
-width:80%;
+width:100%;
  top:40%;
  left: 10%;
 }
@@ -97,4 +97,29 @@ width:80%;
 margin-top: 9px;
  text-decoration: none;
  color: #fff;
+}
+
+#contenedorpalabra{
+      position:absolute;
+       overflow:scroll;
+       height:90%;
+       width:1000px;
+       top:40%;
+        left:10%;
+       align: center;
+  }
+}
+
+#tablamensajespalabra{
+background:  #white;
+height:70%;
+width:1000px;
+ top:40%;
+ left: 10%;
+}
+#iniciarpalabra{
+
+   background:  #bbe2f9;
+   font-size: 40px;
+   width: 1000px;
 }

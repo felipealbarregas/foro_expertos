@@ -9,39 +9,28 @@
 <link rel="stylesheet" type="text/css" href="../css/styletabla1.css">
 <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
 <script src="js/creartabla.js" type="text/javascript"></script>
- <link rel="stylesheet" href="js/v2.3.2/jquery.rateyo.css"/>
-  <script src="js/v2.3.2/jquery.rateyo.js"></script>
-  <script src="js/funciones.js" type="text/javascript"></script>
-  <script src="js/creartabla.js" type="text/javascript"></script>
+<script src="js/funciones.js" type="text/javascript"></script>
 <script src ="js/obtenersubcategoriausuario.js" type="text/javascript"></script>
 <link href="js/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
-
 window.onload = function() {
+
 $("#fecha").val(sessionStorage.getItem("fecha"));
 $("#mensaje").val(sessionStorage.getItem("mensaje"));
 $("#usu").val(sessionStorage.getItem("usuario"));
 $("#temapre").val(sessionStorage.getItem("tema"));
-
+$("#idpregunta").val(sessionStorage.getItem("id"));
 $("#idsubcategoria").val(sessionStorage.getItem("idsubcategoria"));
 
 mostrarsubcategoria();
 mostrarusuario();
 mostrarrespuesta();
-
-
+comprobarusuario(3);
 }
-
-
-
-
 function mostrarsubcategoria(){
   var parametros = {"id":sessionStorage.getItem("idsubcategoria")};
 
-function pintarestrellas(){
-
-}
 
 $.ajax({
    type: "GET",
@@ -62,8 +51,7 @@ $.ajax({
 }
 
 function mostrarusuario(){
-  var idpreguntar=parametroURL("id");
-   var parametros1 = {"id":idpreguntar};
+   var parametros1 = {"id":sessionStorage.getItem("idusuario")};
  $.ajax({
     type: "GET",
     url: '../php/obtenerusuario.php',
@@ -77,13 +65,13 @@ function mostrarusuario(){
     });
     },
     error: function(data) {
-      alert('Error al obtener su Mensaje');
+      alert('error');
     }
   });
 }
+
 function mostrarrespuesta(){
-  var idpregunta = parametroURL('id')
-  var parametros2 = {"id": idpregunta};
+  var parametros2 = {"id":sessionStorage.getItem("id")};
 $.ajax({
  type: "GET",
  url: '../php/obtenerrespuesta.php',
@@ -92,54 +80,27 @@ $.ajax({
 
  success: function(data){
         $.each(data,function(i,item) {
-          $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas <div id="rateYo'+i+'"></div><hr id="rayascolor"></div>');
+          $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas<hr id="rayascolor"></div>');
           $('#contenidoresp').append('<tr><td rowspan="2" id="usuarioresp">'+item.nickname+'</td><td><strong>Fecha:</strong></td><td id="fecharesp">'+item.fecha+'</td></tr>  <tr><td><strong>Mensaje:</strong></td><td id="mensajeresp">'+item.mensaje+'</td></tr></br>');
-          $(function () {
-          $("#rateYo"+i).rateYo({
-            rating: 0.5,
-             starWidth: "20px",
-            spacing   : "5px",
-            fullStar: true,
-            multiColor: {
-               "startColor": "#FF0000", //RED
-              "endColor"  : "#00FF00"  //GREEN
-          }
-          });
-        });
 
-          $(function () {
-
-            var $rateYo = $("#rateYo"+i).rateYo();
-
-              $($rateYo).click(function () {
-
-                /* get rating */
-            var rating = $rateYo.rateYo("rating");
-
-            var parametros4 = {"rating": rating, "idrespuesta":item.idrespuesta};
-            $.ajax({
-               type: "GET",
-               url: '../php/introducirvaloracion.php',
-               dataType: "json",
-               data: parametros4,
-             });
-
-              });
-                });
-
-
-});
+ });
  },
  error: function(data) {
-   alert('No existen respuestas para su mensaje');
+   alert('error');
  }
 });
 }
 
 
-
-
-
+$('#formularioaenviar').submit(function (ev) {
+  alert($('#formularioaenviar').serialize());
+  $.ajax({
+    type: "GET",
+    url: "php/agregarrespuesta.php",
+    data: $('#formularioaenviar').serialize(),
+    success: function (data) { alert('Datos enviados !!!'); }
+  });
+});
 </script>
 </head>
 <body>
@@ -149,18 +110,16 @@ $.ajax({
         <a class="boton_personalizado1" href=loguearse.html>Iniciar Sesion</a>
     <form id="buscar" action="" method="">
       <input id="search" type="search" placeholder="Buscar...">
-        <button id="btnbuscar">Buscar</button>
+      <button id="btnbuscar">Buscar</button>
     </form>
   </header>
 
   <ul id="menubar">
-  <li><a href="iniciousuarios.html">Inicio</a></li>
-  <li><a href="realizarpreguntas.html">Preguntar</a></li>
-  <li><a href="vermispreguntas.html">Mis Preguntas</a></li>
+    <li><a href="inicioexpertos.html">Inicio</a></li>
+    <li><a href="preguntascategoria.html">Preguntas</a></li>
+    <li><a href="vermisvaloraciones.html">Mis Valoraciones</a></li>
   <li><a href="php/enviarcorreo.php">Contacto</a></li>
-
-  <li>
-    <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="desplegarmenu(1)"></li>
+  <img  id="logo" src="imagenes/perfildeusuario.jpg"  onclick="comprobarusuario(3)"></li>
   <li id="nickname"><script>var nickname = sessionStorage.getItem("usuario"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 
@@ -191,6 +150,7 @@ $.ajax({
    			</tbody>
    		</table>
 </div>
+
 
 
 

@@ -21,13 +21,15 @@
 }
 
 label{
+  left: 10%;
 	width:30%;
 	font-weight:bold;
 	display:inline-block;
 }
 
 input[type="text"],
-input[type="email"]{
+input[type="email"],
+input[type="password"]{
 	width:180px;
 	padding:5px 10px;
 	border:1px solid #f6f6f6;

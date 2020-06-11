@@ -7,34 +7,21 @@
 <link rel="stylesheet" type="text/css" href="../css/stylescabecera.css">
 <link rel="stylesheet" type="text/css" href="../css/stylefooter.css">
 <link rel="stylesheet" type="text/css" href="../css/stylebody.css">
-<link rel="stylesheet" type="text/css" href="../css/styletabla.css">
+<script src="js/obtenerinfousu.js" type="text/javascript"></script>
 <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
 <script src="js/funciones.js" type="text/javascript"></script>
 <script src="js/creartabla.js" type="text/javascript"></script>
 <link href="js/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-<script>
+<script type="text/javascript">
+var nickname = sessionStorage.getItem("usuario");
+window.onload=function(){
 
-window.onload = function() {
-  $.ajax({
-     type: "GET",
-     url: '../php/obtenerpreguntastodas.php',
-     dataType: "json",
+obtenerinfousu(nickname);
 
-     success: function(data){
-            $.each(data,function(i,item) {
-              $('#contenido').append('<div id="cabecera"><hr id="cabecera">Mensaje<hr id="cabecera"></div>');
-              $('#contenido').append('<tr class="tema"><td><strong>Tema:</strong>  ' + item.tema + '</td></tr><tr><td class="fecha"><strong>Fecha:  </strong>' + item.fecha + '</td></tr><tr><td class="mens"><strong>Mensaje:</strong> <br><br>' + item.mensaje + '</td></tr>');
-
-     });
-     },
-     error: function (request, status, error) {
-          alert(error);
-      }
-   });
 }
-
 </script>
+
 </head>
 <body>
   <header id="main-header">
@@ -43,7 +30,7 @@ window.onload = function() {
         <a class="boton_personalizado1" href=loguearse.html>Iniciar Sesion</a>
     <form id="buscar" action="" method="">
       <input id="search" type="search" placeholder="Buscar...">
-    <button id="btnbuscar">Buscar</button>
+      <button id="btnbuscar">Buscar</button>
     </form>
   </header>
 
@@ -58,27 +45,43 @@ window.onload = function() {
   <li id="nickname"><script>var nickname = sessionStorage.getItem("usuario"); document.getElementById("nickname").innerHTML= nickname;</script></li>
   </ul>
 
-<br>
-<br>
-<br>
-  <h1>Index de usuario</h1>
 
 
-  <div id="contenedor">
-  <table  id="tablamensajes">
-    <thead>
-      <tr>
-         <th id="iniciar">Ultimos Mensajes</th>
-      </tr>
+<main id="cuerpo">
+
+    <h1 id=titulo> Modificacion de Usuarios</h1>
+
+    <form id="formulario" action="php/actualizarusu.php" method="POST">
 
 
-    </thead>
-      <tbody id="contenido">
 
-      </tbody>
-    </table>
-  </div>
+            <label for="nombre">Nombre * </label>
+            <input id="nombre" type="text" name="nombre" class="form-input" required/>
 
+            <label for="apellido">Apellido * </label>
+            <input id="apellido" type="text" name="apellido" class="form-input" required/>
+
+            <label for="Provincia">Provincia * </label>
+            <input id="provincia" type="text" name="provincia" class="form-input" required/>
+
+            <label for="ciudad">Ciudad * </label>
+            <input  id="ciudad" type="text" name="ciudad" class="form-input" required/>
+
+            <label for="nickname">nickname * </label>
+            <input  id="usuario" type="text" name="usuario" class="form-input" disabled="true" required/>
+            <input type="hidden" id="usu" name="usu"/>
+            <label for="Password">Contraseña * </label>
+            <input  id="password" type="password" name="password" class="form-input" required/>
+
+            <label for="email">Email *</label>
+            <input  id="email" type="email" name="email" class="form-input" />
+
+     <input  name="submit" type="submit" value="Modificar" />
+
+  </form>
+
+
+</main>
 </body>
   <footer>
   <div id="footer">

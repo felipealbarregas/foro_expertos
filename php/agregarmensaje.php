@@ -22,10 +22,6 @@ if (mysqli_query($conexion, $sql)) {
       echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
 }
 
-$tesauro=explode(" ", $tema);
-foreach($tesauro as $val) {
-  $sql = "INSERT INTO tesauro (palabra) VALUES ('$val')";
-  mysqli_query($conexion, $sql);
 
 }
 

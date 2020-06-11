@@ -12,8 +12,8 @@
 <body>
   <header id="main-header">
     <img src="../imagenes/logo.png"></img>
-    <a class="boton_personalizado" href="registrar.html">Registrarse</a>
-        <a class="boton_personalizado1" href=loguearse.html>Loguearse</a>
+    <a class="boton_personalizado" href="../registrar.html">Registrarse</a>
+        <a class="boton_personalizado1" href=../loguearse.html>Loguearse</a>
     <form id="buscar" action="" method="">
       <input type="search" placeholder="Buscar...">
       <button>Buscar</button>

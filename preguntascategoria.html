@@ -16,6 +16,8 @@
 window.onload = function() {
 var nickname=sessionStorage.getItem("usuario");
   var parametros = {"nickname":nickname};
+  //obtenemos el nickname del usuario y lanzamos la consulta para obtener las preguntas de la categoria
+  //a la que pertenece el usuario
 $.ajax({
    type: "GET",
    url: '../php/obtenerpreguntascategoria.php',

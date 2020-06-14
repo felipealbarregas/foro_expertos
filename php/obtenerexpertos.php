@@ -1,8 +1,8 @@
 <?php
 
-
+//devuelve la lista de todos los expertos que existen en la tabla
 include('../includes/dbconnection.php' );
-$subcategoria="";
+
 
 
       $consulta = "SELECT ID, nickname FROM expertos  ";

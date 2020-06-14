@@ -1,6 +1,6 @@
 <?php
 include('../includes/dbconnection.php' );
-
+//obtenemos los datos y seleccionamos el id del experto en la tabla usuario
 $nickname=$_POST['nickname'];
 $Subcategoria=$_POST['Subcategoria'];
 $profesion=$_POST['Profesion'];
@@ -12,7 +12,7 @@ $id =$fila['ID'];
 
 
 
-
+//insertamos en la tabla experto con los datos obtenidos
 $sql = "INSERT INTO expertos (ID_persona, Nickname,ID_Subcategoria,ID_Profesion) VALUES ('$id', '$nickname','$Subcategoria','$profesion')";
 if (mysqli_query($conexion, $sql)) {
       echo "Experto creado correctamente";

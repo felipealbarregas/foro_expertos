@@ -1,3 +1,5 @@
+//funcion que se llama despues de seleccionar la subcategoria, obtenemos la subcategoria y obtenemos la profesiones
+//que encontremos en esa subcategoria
 function  obtenerprofesion(){
   for (let i = document.getElementById('profesion').options.length; i >= 0; i--) {
     document.getElementById('profesion').remove(i);

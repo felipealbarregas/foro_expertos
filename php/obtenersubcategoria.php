@@ -1,11 +1,12 @@
 <?php
-
+//pagina que recibe por parametro el id de categoria y lanzamos una subconsulta para obtener el nombre y el id
+//de la subconsulta
 
 include('../includes/dbconnection.php' );
 $categoria="";
 if(isset($_GET['id']) && !empty($_GET['id'])){
-  // Verify data
-  $categoria = $_GET['id']; // Set email variable
+
+  $categoria = $_GET['id']; 
   }
       $consulta = "SELECT ID, Nombre FROM subcategoria where ID_categoria='$categoria'";
       $resultado = $conexion->query($consulta)or die($conexion->error);

@@ -48,9 +48,6 @@
         //Una Dirección de respuesta, si queremos que sea distinta que la del remitente
         $headers .= "Reply-To: ".$_POST['emisor']."\r\n";
 
-        //Direcciones que recibián copia
-        //$headers .= "Cc: ejemplo2@gmail.com\r\n";
-
         //direcciones que recibirán copia oculta
         //$headers .= "Bcc: ejemplo3@yahoo.com\r\n";
         if(mail($_POST['receptor'],$_POST['asunto'],$cuerpo,$headers)){

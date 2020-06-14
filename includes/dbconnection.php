@@ -1,7 +1,8 @@
 <?php
+//conexion a la base de datos
 
 $usuario = "felipe";
-$contrasena = "1234";  // en mi caso tengo contraseña pero en casa caso introducidla aquí.
+$contrasena = "1234";
 $servidor = "localhost";
 $basededatos = "foro_expertos";
 

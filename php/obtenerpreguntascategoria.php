@@ -1,5 +1,6 @@
 <?php
-
+//recibe el nombre del experto seleccionamos el id de la subcategoria del expero y con ella obtenemos las preguntas
+//que se han realizado en relacion a esa subcategoria
 include('../includes/dbconnection.php' );
 $id=0;
 if(isset($_GET['nickname']) && !empty($_GET['nickname'])){

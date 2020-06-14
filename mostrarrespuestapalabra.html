@@ -15,7 +15,7 @@
 <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 window.onload = function() {
-
+//obtenemos la informacion de la sesion
 $("#fecha").val(sessionStorage.getItem("fecha"));
 $("#mensaje").val(sessionStorage.getItem("mensaje"));
 $("#usu").val(sessionStorage.getItem("usuario"));
@@ -23,10 +23,10 @@ $("#temapre").val(sessionStorage.getItem("tema"));
 $("#idpregunta").val(sessionStorage.getItem("id"));
 $("#idsubcategoria").val(sessionStorage.getItem("idsubcategoria"));
 
-mostrarsubcategoria();
-mostrarusuario();
-mostrarrespuesta();
-comprobarusuario(3);
+mostrarsubcategoria();//llamamos al metodo mostrar subcategoria
+mostrarusuario();//llamamos al metodo mostrar usuario
+mostrarrespuesta();//llamamos al metodo mostrar respuesta
+comprobarusuario(3);//llamamos al metodo comprobarusuario con el parametro 3
 }
 function mostrarsubcategoria(){
   var parametros = {"id":sessionStorage.getItem("idsubcategoria")};
@@ -92,15 +92,6 @@ $.ajax({
 }
 
 
-$('#formularioaenviar').submit(function (ev) {
-  alert($('#formularioaenviar').serialize());
-  $.ajax({
-    type: "GET",
-    url: "php/agregarrespuesta.php",
-    data: $('#formularioaenviar').serialize(),
-    success: function (data) { alert('Datos enviados !!!'); }
-  });
-});
 </script>
 </head>
 <body>

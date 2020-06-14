@@ -1,5 +1,5 @@
 <?php
-
+//pagina que recibe por parametros la palabra y lanza una consulta para obtener la informacion para el mensaje
 include('../includes/dbconnection.php' );
 $id=0;
 if(isset($_GET['palabra']) && !empty($_GET['palabra'])){

@@ -1,11 +1,11 @@
 <?php
 
-
+//pagina que recibe el id de subcategoria y envia las profesiones que tienen esa subcategoria
 include('../includes/dbconnection.php' );
 $subcategoria="";
 if(isset($_GET['id']) && !empty($_GET['id'])){
-  // Verify data
-  $subcategoria = $_GET['id']; // Set email variable
+
+  $subcategoria = $_GET['id'];
   }
 
       $consulta = "SELECT ID, Nombre FROM profesiones where ID_Subcategoria='$subcategoria' ";

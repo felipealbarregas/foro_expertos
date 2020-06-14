@@ -1,10 +1,10 @@
 <?php
+//consulta si el experto esta activo o no para mostrar el completar perfil
 include('../includes/dbconnection.php' );
   $mensaje=0;
 
     if(isset($_POST['nickname']) && !empty($_POST['nickname'])){
-      // Verify data
-      $usuario = $_POST['nickname']; // Set email variable
+      $usuario = $_POST['nickname'];
 
       }
       $consulta = "SELECT ID FROM expertos where Nickname='$usuario' and activo='0'";

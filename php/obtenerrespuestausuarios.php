@@ -1,4 +1,6 @@
 <?php
+
+//consulta que recibiendo por parametro el id de de los mensaje obtenemos las respuestas guardadas por esa pregunta
 include('../includes/dbconnection.php' );
 if(isset($_GET['id']) && !empty($_GET['id'])){
   $id = $_GET['id'];

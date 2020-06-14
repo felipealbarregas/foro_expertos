@@ -15,7 +15,7 @@
 <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 window.onload = function() {
-
+//aqui vamos a obtener los datos de la sesion del mensaje y vamos a mostrarlos en el cuestionario
 $("#fecha").val(sessionStorage.getItem("fecha"));
 $("#mensaje").val(sessionStorage.getItem("mensaje"));
 $("#usu").val(sessionStorage.getItem("usuario"));
@@ -23,14 +23,14 @@ $("#temapre").val(sessionStorage.getItem("tema"));
 $("#idpregunta").val(sessionStorage.getItem("id"));
 $("#idsubcategoria").val(sessionStorage.getItem("idsubcategoria"));
 
-mostrarsubcategoria();
-mostrarusuario();
-mostrarrespuesta();
-comprobarusuario(3);
+mostrarsubcategoria();//llamamos al metodo mostrarsubcategoria
+mostrarusuario();//llamamos al metodo mostrarusuario
+mostrarrespuesta();//llamamos al metodo mostrarrespuesta
+comprobarusuario(3);//llamamos al metodo comprobarusuario con el parametro 3
 }
 function mostrarsubcategoria(){
   var parametros = {"id":sessionStorage.getItem("idsubcategoria")};
-
+//obtenemos el id de la subcategoria y lanzamos la consulta ajax
 
 $.ajax({
    type: "GET",
@@ -40,8 +40,8 @@ $.ajax({
 
    success: function(data){
           $.each(data,function(i,item) {
-          $("#subcategoria").append(item.subcategoria_nombre);
-          $("#subcate").val(item.subcategoria_nombre);
+          $("#subcategoria").append(item.subcategoria_nombre);//mostramos el nombre en la parte de mensaje
+          $("#subcate").val(item.subcategoria_nombre);//y agregamos en la zona de respuesta el nombre
    });
    },
    error: function(data) {
@@ -52,6 +52,7 @@ $.ajax({
 
 function mostrarusuario(){
    var parametros1 = {"id":sessionStorage.getItem("idusuario")};
+//obtenemos el id de usuario y lanzamos la consulta ajax
  $.ajax({
     type: "GET",
     url: '../php/obtenerusuario.php',
@@ -60,7 +61,7 @@ function mostrarusuario(){
 
     success: function(data){
            $.each(data,function(i,item) {
-          $("#usuario").append(item);
+          $("#usuario").append(item);//mostramos el nombre del usuario en la parte de mensaje
 
     });
     },
@@ -72,6 +73,7 @@ function mostrarusuario(){
 
 function mostrarrespuesta(){
   var parametros2 = {"id":sessionStorage.getItem("id")};
+  //obtenemos el id de mensajes y lanzamos la consulta ajax
 $.ajax({
  type: "GET",
  url: '../php/obtenerrespuesta.php',
@@ -80,7 +82,7 @@ $.ajax({
 
  success: function(data){
         $.each(data,function(i,item) {
-          $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas<hr id="rayascolor"></div>');
+          $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas<hr id="rayascolor"></div>');//por cada respuesta vamos a lanzar una fila con los datos de la respuesta
           $('#contenidoresp').append('<tr><td rowspan="2" id="usuarioresp">'+item.nickname+'</td><td><strong>Fecha:</strong></td><td id="fecharesp">'+item.fecha+'</td></tr>  <tr><td><strong>Mensaje:</strong></td><td id="mensajeresp">'+item.mensaje+'</td></tr></br>');
 
  });
@@ -92,7 +94,7 @@ $.ajax({
 }
 
 
-$('#formularioaenviar').submit(function (ev) {
+$('#formularioaenviar').submit(function (ev) {//al pulsar en enviar enviaremos los datos del formulario para agregar una nueva respuesta
   alert($('#formularioaenviar').serialize());
   $.ajax({
     type: "GET",

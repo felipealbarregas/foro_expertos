@@ -1,3 +1,6 @@
+
+//esta funcion es llamada cuando se cargan los mensajes y sirve para obtener la informacion, tanto de usuarios
+//como  expertos, lanza una consulta y va guardando las respuestas en los distintos input del formulario
 function  obtenerinfousu(nickname){
 
   var parametros = {"nickname":nickname};

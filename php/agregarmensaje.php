@@ -1,6 +1,6 @@
 <?php
 include('../includes/dbconnection.php' );
-
+//obtenemos los datos del formulario y lanzamos la consulta
 
 $nombre=$_POST['usuario'];
 $tema=$_POST['tema'];

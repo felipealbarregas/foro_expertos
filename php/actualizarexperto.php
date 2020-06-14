@@ -1,6 +1,6 @@
 <?php
 
-
+//pagina para autorizar a los expertos poniendo el id en 1
 include('../includes/dbconnection.php' );
 if(isset($_GET['id']) && !empty($_GET['id'])){
   $id=$_GET['id'];

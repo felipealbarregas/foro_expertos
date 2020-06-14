@@ -1,6 +1,6 @@
 <?php
-
-
+//pagina que recibe por parametro el nickname del usuario y obtenemos su id mediante consultas
+//por ultimo obtenemos la informacion de las preguntas realizadas por el usuario 
 include('../includes/dbconnection.php' );
 $categoria="";
 if(isset($_GET['nickname']) && !empty($_GET['nickname'])){

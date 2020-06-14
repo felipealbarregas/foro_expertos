@@ -19,6 +19,7 @@
 <script>
 
 window.onload = function() {
+  //mostramos la informacion almacenada en la sesion en cada lugar de la tabla
 $("#fecha").val(sessionStorage.getItem("fecha"));
 $("#mensaje").val(sessionStorage.getItem("mensaje"));
 $("#usu").val(sessionStorage.getItem("usuario"));
@@ -26,7 +27,7 @@ $("#temapre").val(sessionStorage.getItem("tema"));
 
 $("#idsubcategoria").val(sessionStorage.getItem("idsubcategoria"));
 
-mostrarsubcategoria();
+mostrarsubcategoria();//llamamos al metro mostrar subcategoria
 mostrarusuario();
 mostrarrespuesta();
 
@@ -38,10 +39,7 @@ mostrarrespuesta();
 
 function mostrarsubcategoria(){
   var parametros = {"id":sessionStorage.getItem("idsubcategoria")};
-
-function pintarestrellas(){
-
-}
+//obtenemos el id de la subcategoria y lanzamos la consulta ajax
 
 $.ajax({
    type: "GET",
@@ -53,6 +51,7 @@ $.ajax({
           $.each(data,function(i,item) {
           $("#subcategoria").append(item.subcategoria_nombre);
           $("#subcate").val(item.subcategoria_nombre);
+          //guardamos la subcategoria del mensaje
    });
    },
    error: function(data) {
@@ -64,6 +63,7 @@ $.ajax({
 function mostrarusuario(){
   var idpreguntar=parametroURL("id");
    var parametros1 = {"id":idpreguntar};
+   //almacenamos el id del usuario y enviamos la consulta ajax
  $.ajax({
     type: "GET",
     url: '../php/obtenerusuario.php',
@@ -72,7 +72,7 @@ function mostrarusuario(){
 
     success: function(data){
            $.each(data,function(i,item) {
-          $("#usuario").append(item);
+          $("#usuario").append(item);//agregamos el mensaje usuario a cada pregunta
 
     });
     },
@@ -84,6 +84,7 @@ function mostrarusuario(){
 function mostrarrespuesta(){
   var idpregunta = parametroURL('id')
   var parametros2 = {"id": idpregunta};
+  //guardamos en parametro el id de pregunta
 $.ajax({
  type: "GET",
  url: '../php/obtenerrespuesta.php',
@@ -91,6 +92,8 @@ $.ajax({
  data: parametros2,
 
  success: function(data){
+
+   //mostramos para cada respuesta los parametros recibidos de la consulta y las estrellas para la puntuacion
         $.each(data,function(i,item) {
           $('#contenidoresp').append('<div id="iniciarresp"><hr id="rayascolor">Respuestas <div id="rateYo'+i+'"></div><hr id="rayascolor"></div>');
           $('#contenidoresp').append('<tr><td rowspan="2" id="usuarioresp">'+item.nickname+'</td><td><strong>Fecha:</strong></td><td id="fecharesp">'+item.fecha+'</td></tr>  <tr><td><strong>Mensaje:</strong></td><td id="mensajeresp">'+item.mensaje+'</td></tr></br>');
@@ -108,7 +111,8 @@ $.ajax({
         });
 
           $(function () {
-
+              //al clickear en las estrella se activa la funcion que obtiene el valor de las estrellas y envia
+              //una peticion ajax para almacenar la valoracion
             var $rateYo = $("#rateYo"+i).rateYo();
 
               $($rateYo).click(function () {
@@ -131,7 +135,7 @@ $.ajax({
 });
  },
  error: function(data) {
-   alert('No existen respuestas para su mensaje');
+   alert('No existen respuestas para su mensaje');//mensaje de error si no existe ninguna respuesta
  }
 });
 }

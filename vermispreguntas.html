@@ -17,6 +17,8 @@ window.onload = function() {
 
 var nickname=sessionStorage.getItem("usuario");
   var parametros = {"nickname":nickname};
+  //consulta que obtiene el nickname del usuario y lanza una consulta ajax para obtener las preguntas realizadas
+  //por cada usuario
 $.ajax({
    type: "GET",
    url: '../php/obtenerpreguntas.php',

@@ -12,7 +12,7 @@
 <link href="js/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
-window.onload = function() {
+window.onload = function() {//al iniciar lanzamos la consulta ajax para obtener los ultimos 10 mensajes
   $.ajax({
      type: "GET",
      url: '../php/obtenerpreguntastodas.php',
@@ -20,8 +20,8 @@ window.onload = function() {
 
      success: function(data){
             $.each(data,function(i,item) {
-              $('#contenido').append('<div id="cabecera"><hr id="cabecera">Mensaje<hr id="cabecera"></div>');
-              $('#contenido').append('<tr class="tema"><td><strong>Tema:</strong>  ' + item.tema + '</td></tr><tr><td class="fecha"><strong>Fecha:  </strong>' + item.fecha + '</td></tr><tr><td class="mens"><strong>Mensaje:</strong> <br><br>' + item.mensaje + '</td></tr>');
+              $('#contenido').append('<div id="cabecera"><hr id="cabecera">Mensaje<hr id="cabecera"></div>');//agregamos a la tabla los distintos mensajes en este caso una cabecera
+              $('#contenido').append('<tr class="tema"><td><strong>Tema:</strong>  ' + item.tema + '</td></tr><tr><td class="fecha"><strong>Fecha:  </strong>' + item.fecha + '</td></tr><tr><td class="mens"><strong>Mensaje:</strong> <br><br>' + item.mensaje + '</td></tr>');//aqui obtenemos los mensajes y creamos una fila por cada mensaje
 
      });
      },

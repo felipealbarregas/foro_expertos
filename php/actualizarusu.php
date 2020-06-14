@@ -1,7 +1,7 @@
 <?php
 include('../includes/dbconnection.php' );
 
-
+//esta pagina obtiene los datos del formulario y actualizamos la tabla personas
 $nombre=$_POST['nombre'];
 $apellidos=$_POST['apellido'];
 $provincia=$_POST['provincia'];

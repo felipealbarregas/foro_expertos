@@ -14,10 +14,10 @@
 <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 window.onload = function() {
-  obtenerpalabras();
+  obtenerpalabras();//llamamos al metodo para obtener todas las palabras del tesauro
 
 }
-function obtenerpalabras(){
+function obtenerpalabras(){//ahora en la tabla de palabras agregamos la lista de palabras
   $.ajax({
    type: "GET",
    url: '../php/obtenerpalabras.php',
@@ -36,17 +36,6 @@ function obtenerpalabras(){
 
 }
 
-$('#formularioaenviar').submit(function (ev) {
-  alert($('#formularioaenviar').serialize());
-  $.ajax({
-    type: "GET",
-    url: "php/agregarpalabra.php",
-    data: $('#formularioaenviar').serialize(),
-    success: function (data) {
-      obtenerpalabras();
-     }
-  });
-});
 </script>
 </head>
 <body>

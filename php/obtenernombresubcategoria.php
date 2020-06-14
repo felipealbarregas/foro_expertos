@@ -1,5 +1,5 @@
 <?php
-
+//pagina que recibe el id de la subcategoria y tras lanzar la consulta devuelve el nombre y el id de subcategoria
 
 include('../includes/dbconnection.php' );
 if(isset($_GET['id']) && !empty($_GET['id'])){

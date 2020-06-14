@@ -1,4 +1,6 @@
 <?php
+
+//pagina que obtiene el nickname del usuario y devuelve todos los datos del usuario
 include('../includes/dbconnection.php' );
 if(isset($_GET['nickname']) && !empty($_GET['nickname'])){
   $nickname= $_GET['nickname'];

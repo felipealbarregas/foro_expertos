@@ -18,8 +18,8 @@
 <script type="text/javascript">
 function obtenergraficas(){
 
-    var cantidad=new Array()
-    var dias=new Array()
+
+    var dias=new Array();
   var tabla1=document.getElementById("datos").value;
   var tiempo1=document.getElementById("tiempo").value;
     var parametros = {"tablas":tabla1 , "tiempo":tiempo1};
@@ -53,17 +53,27 @@ function obtenergraficas(){
 
 
 function pintagrafica(dias) {
+var cantidad=new Array();
+var f = new Date();
   for( contador=1; contador <= 31; contador++ ) {
     if( dias[contador]==undefined){
       dias[contador]=0;
     }
   }
   var mychart = document.getElementById("container").getContext("2d");
+  var tiempo1=document.getElementById("tiempo").value;
+  if(tiempo1=="day"){
+    cantidad.push(f.getDate());
+  }else if(tiempo1=="week"){
+      cantidad.push["1","2","3","4","5","6","7"];
+  }else if(tiempo1=="month"){
+    cantidad.push("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31");
+  }
 
 var chart =new Chart( mychart,{
   type:"bar",
   data:{
-    labels: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"],
+    labels: cantidad,
     datasets:[
       {
         label:"Estadisticas",

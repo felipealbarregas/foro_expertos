@@ -1,4 +1,6 @@
 
+// esta funcion va a ser llamada al cargar la pagina de autorizar a expertos
+//y va a cargar el id y el nombre de los expertos en el select del formulario
 function obtenerexperto(){
 $.ajax({
    type: "GET",

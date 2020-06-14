@@ -1,10 +1,10 @@
 <?php
 
-
+//pagina que recibe por parametros la tabla y el tiempo que se desea obtener, y devuelvo los dias que tenemos registros y la cantidad por dias
 include('../includes/dbconnection.php' );
 if(isset($_GET['tablas']) && !empty($_GET['tablas'])){
-  // Verify data
-  $tablas = $_GET['tablas']; // Set email variable
+
+  $tablas = $_GET['tablas'];
   $tiempo = $_GET['tiempo'];
   }
 

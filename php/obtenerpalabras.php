@@ -1,4 +1,6 @@
 <?php
+
+//pagina que lanza una consulta para obtener la lista de palabras de la tabla tesauro
 include('../includes/dbconnection.php' );
 
 

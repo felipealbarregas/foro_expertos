@@ -1,4 +1,6 @@
+
 <?php
+//pagina que recibe el id  y envia la informacion de las respuestas de los mensajes que tiene el mensaje
 include('../includes/dbconnection.php' );
 if(isset($_GET['id']) && !empty($_GET['id'])){
   $id = $_GET['id'];

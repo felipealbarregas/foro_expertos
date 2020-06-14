@@ -1,6 +1,6 @@
 <?php
 
-
+//pagina que devuelve el nombre y el id de la categoria 
 include('../includes/dbconnection.php' );
 
 
